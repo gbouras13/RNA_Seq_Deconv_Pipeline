@@ -92,7 +92,7 @@ rule feature_count_tcga:
     input:
         expand(os.path.join(STAR_BAMS,"{sample}_star_100_Aligned.sortedByCoord.out.bam"), sample = SAMPLES)
     output:
-        os.path.join(RESULTS,"geneCounts.out")
+        os.path.join(RESULTS,"geneCounts_tcga.out")
     log:
         os.path.join(LOGS,"feature_count.log")
     params:
@@ -114,7 +114,7 @@ rule feature_count_ena:
     input:
         expand(os.path.join(STAR_BAMS,"{sample}_star_150_Aligned.sortedByCoord.out.bam"), sample = SAMPLES)
     output:
-        os.path.join(RESULTS,"geneCounts.out")
+        os.path.join(RESULTS,"geneCounts_ena.out")
     log:
         os.path.join(LOGS,"feature_count.log")
     params:
@@ -132,12 +132,12 @@ rule feature_count_ena:
 
 
 
-rule feature_count_cut:
+rule feature_count_cut_ena:
     """feature_counts """
     input:
-         os.path.join(RESULTS,"geneCounts.out")
+         os.path.join(RESULTS,"geneCounts_ena.out")
     output:
-        os.path.join(RESULTS,"geneCounts.txt")
+        os.path.join(RESULTS,"geneCounts_ena.txt")
     log:
         os.path.join(LOGS,"feature_count_cut.log")
     conda:
@@ -149,7 +149,22 @@ rule feature_count_cut:
         cut -f1,7- {input[0]} | sed 1d > {output[0]}
         """
 
-
+rule feature_count_cut_tcga:
+    """feature_counts """
+    input:
+         os.path.join(RESULTS,"geneCounts_tcga.out")
+    output:
+        os.path.join(RESULTS,"geneCounts_tcga.txt")
+    log:
+        os.path.join(LOGS,"feature_count_cut.log")
+    conda:
+        os.path.join('..', 'envs','align.yaml')
+    threads:
+        1
+    shell:
+        """
+        cut -f1,7- {input[0]} | sed 1d > {output[0]}
+        """
 
 
 

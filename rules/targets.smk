@@ -11,13 +11,16 @@ PreprocessingFiles = [
 
 if TCGA:
     AlignFiles = os.path.join(LOGS, "star_100_align.txt")
+    FeatureCountFiles = [
+    os.path.join(RESULTS,"geneCounts_tcga.out"),
+    os.path.join(RESULTS,"geneCounts_tcga.txt")
+    ]
 else:
     AlignFiles = os.path.join(LOGS, "star_150_align.txt")
-
-FeatureCountFiles = [
-    os.path.join(RESULTS,"geneCounts.out"),
-    os.path.join(RESULTS,"geneCounts.txt")
-]
+    FeatureCountFiles = [
+        os.path.join(RESULTS,"geneCounts_ena.out"),
+        os.path.join(RESULTS,"geneCounts_ena.txt")
+    ]
 
 
 
