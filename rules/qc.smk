@@ -23,7 +23,7 @@ rule fastqc:
     """fastqc trimmed reads"""
     input:
         expand(os.path.join(TMP,"{sample}_trim_R1.fastq.gz"), sample = SAMPLES),
-        expand(os.path.join(TMP,"{sample}_trim_R1.fastq.gz"), sample = SAMPLES),
+        expand(os.path.join(TMP,"{sample}_trim_R2.fastq.gz"), sample = SAMPLES),
         TMP
     output:
         directory(FASTQC),
