@@ -18,16 +18,12 @@ configfile: os.path.join(workflow.basedir,  'config', 'config.yaml')
 BigJobMem = config["BigJobMem"]
 BigJobCpu = config["BigJobCpu"]
 
-if config["hg_38_dir"] is None:
-    hg38_dir = "/hpcfs/users/a1667917/STAR_Ref_Genomes"
-else:
-    hg38_dir = config["hg38_dir"]
-
 ### DIRECTORIES
 include: "rules/directories.smk"
 
 READS = config['Reads']
 OUTPUT = config['Output']
+hg38_dir = config['HG38_dir']
 
 # Parse the samples and read files
 include: "rules/samples.smk"
