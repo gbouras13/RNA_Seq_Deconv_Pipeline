@@ -36,9 +36,9 @@ FASTQC = os.path.join(RESULTS, "FASTQC")
 # needs to be created before fastqc is run
 if not os.path.exists(RESULTS):
   os.makedirs(RESULTS)
-  # needs to be created before fastqc is run)
+# needs to be created before fastqc is run)
 if not os.path.exists(FASTQC):
   os.makedirs(FASTQC)
-
- if not os.path.exists(STAR_BAMS):
+# needs to be created before alignment
+if not os.path.exists(STAR_BAMS):
   os.makedirs(STAR_BAMS)
