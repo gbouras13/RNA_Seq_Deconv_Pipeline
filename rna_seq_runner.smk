@@ -20,7 +20,6 @@ BigJobCpu = config["BigJobCpu"]
 
 ### DIRECTORIES
 include: "rules/directories.smk"
-
 READS = config['Reads']
 OUTPUT = config['Output']
 hg38_dir = config['HG38_dir']
