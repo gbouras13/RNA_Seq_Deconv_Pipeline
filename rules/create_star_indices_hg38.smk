@@ -25,16 +25,16 @@ if not os.path.exists(os.path.join(hg38_dir, 'hg38_75')):
 
 rule all:
     input:
-        os.path.join(hg38_dir, "chr8_50_star.log"),
-        os.path.join(hg38_dir, "chr8_75_star.log")
+        os.path.join(hg38_dir, "chr8_50_star_build.log"),
+        os.path.join(hg38_dir, "chr8_75_star_build.log")
 
 rule create_50_indecies:
     """create index."""
     input:
-        os.path.join(hg38_dir, 'chr8.fasta'),
+        os.path.join(hg38_dir, 'hg38.fa'),
         os.path.join(hg38_dir, 'hg38.ncbiRefSeq.gtf')
     output:
-        os.path.join(hg38_dir,"chr8_50_star.log")
+        os.path.join(hg38_dir,"chr8_50_star_build.log")
     params:
         os.path.join(hg38_dir, 'hg38_50')
     threads:
@@ -56,10 +56,10 @@ rule create_50_indecies:
 rule create_75_indecies:
     """create index."""
     input:
-        os.path.join(hg38_dir, 'chr8.fasta'),
+        os.path.join(hg38_dir, 'hg38.fa'),
         os.path.join(hg38_dir, 'hg38.ncbiRefSeq.gtf')
     output:
-        os.path.join(hg38_dir,"chr8_75_star.log")
+        os.path.join(hg38_dir,"chr8_75_star_build.log")
     params:
         os.path.join(hg38_dir, 'hg38_75')
     threads:
