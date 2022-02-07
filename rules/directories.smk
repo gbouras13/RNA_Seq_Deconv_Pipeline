@@ -1,7 +1,5 @@
 """
-Database and output locations for Hecatomb
-Ensures consistent variable names and file locations for the pipeline, the database download script,
-and the addHost script.
+Database and output locations for the pipeline
 """
 
 
@@ -42,4 +40,4 @@ if not os.path.exists(FASTQC):
   os.makedirs(FASTQC)
 
  if not os.path.exists(STAR_BAMS):
-  os.makedirs(STAR_BAMS)
+   os.makedirs(STAR_BAMS)
