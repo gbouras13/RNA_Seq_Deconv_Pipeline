@@ -37,7 +37,7 @@ rule download_hg_38_fasta:
         mem_mb=BigJobMem
     shell:
         """
-        wget -c "http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz" -O hg38.fa.gz
+        wget -c "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz" -O hg38.fa.gz
         mv "hg38.fa.gz" {output[1]}
         touch {output[0]}
         """
@@ -53,7 +53,7 @@ rule download_hg_38:
         mem_mb=BigJobMem
     shell:
         """
-        wget -c "http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/genes/hg38.ncbiRefSeq.gtf.gz" -O hg38.fa.gz
+        wget -c "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/genes/hg38.ncbiRefSeq.gtf.gz" -O hg38.fa.gz
         mv "hg38.ncbiRefSeq.gtf.gz" {output[1]}
         touch {output[0]}
         """
