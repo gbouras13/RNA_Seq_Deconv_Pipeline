@@ -1,6 +1,6 @@
 """
 Snakefile for downloading STAR index for hg38
-snakemake -c 16 -s rules/Download_hg38.smk --config STAR_DIR='/Users/a1667917/Documents/Pipelines'
+snakemake -c 16 -s rules/Download_hg38.smk --config hg38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes'
 """
 import os
 
@@ -22,10 +22,9 @@ if not os.path.exists(os.path.join(hg38_dir)):
 
 rule all:
     input:
-        os.path.join(hg38_dir, 'standard', 'download.dlflag'),
-        os.path.join(hg38_dir, 'standard' , 'untar.dlflag'),
-        os.path.join(hg38_dir,"chr8_50_star.log"),
-        os.path.join(hg38_dir,"chr8_75_star.log")
+        os.path.join(hg38_dir, 'download_hg38_fasta.dlflag'),
+        os.path.join(hg38_dir, 'download_hg38_gtf.dlflag'),
+        os.path.join(hg38_dir, 'unzip.dlflag')
 
 rule download_hg_38_fasta:
     """Rule to Download hg38 fasta."""

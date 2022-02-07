@@ -1,6 +1,6 @@
 """
 Snakefile for building STAR index for hg38
-snakemake -c 16 -s rules/create_star_indices_hg38.smk --use-conda --config STAR_DIR='/Users/a1667917/Documents/Pipelines'
+snakemake -c 16 -s rules/create_star_indices_hg38.smk --use-conda --config hg38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes'
 """
 import os
 
@@ -21,6 +21,12 @@ if not os.path.exists(os.path.join(hg38_dir, 'hg38_50')):
 
 if not os.path.exists(os.path.join(hg38_dir, 'hg38_75')):
   os.makedirs(os.path.join(hg38_dir, 'hg38_75'))
+
+
+rule all:
+    input:
+        os.path.join(hg38_dir, "chr8_50_star.log"),
+        os.path.join(hg38_dir, "chr8_75_star.log")
 
 rule create_50_indecies:
     """create index."""
