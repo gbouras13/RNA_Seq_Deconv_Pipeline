@@ -40,8 +40,8 @@ rule fastqc:
         mem_mb=BigJobMem
     shell:
         """
-        fastqc -t {threads} -o {output[0]} {input[0]}
-        fastqc -t {threads} -o {output[0]} {input[1]}
+        fastqc -t {threads} -o {params[0]} {input[0]}
+        fastqc -t {threads} -o {params[0]} {input[1]}
         multiqc {params[0]} {input[2]} -o {params[1]}
         """
 
