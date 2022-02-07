@@ -3,6 +3,8 @@ Snakemake Pipeline to Extract and Align RNA-Seq Data from bam files (TCGA/ENA)
 
 #### This is a Work in Progress.
 
+* input fastqc to be fixed
+
 * Some code (namely, the sample parsing in samples.smk) and inspiration for the general structure has been borrowed from https://github.com/shandley/hecatomb
 * Inputs required are the relevant Bam files, which all must be placed in a certain directory - ideally in the Bams/ directory, but can be anywhere (the directory they are in must be specified with Reads={directory}).
 * Only software requirement is that snakemake be in the $PATH.
