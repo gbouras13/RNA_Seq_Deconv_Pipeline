@@ -15,7 +15,8 @@ else:
     AlignFiles = os.path.join(LOGS, "star_150_align.txt")
 
 FeatureCountFiles = [
-    os.path.join(RESULTS,"geneCounts.out")
+    os.path.join(RESULTS,"geneCounts.out"),
+    os.path.join(RESULTS,"geneCounts.txt")
 ]
 
 

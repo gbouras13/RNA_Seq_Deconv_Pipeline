@@ -130,11 +130,29 @@ rule feature_count_ena:
         featureCounts -Q 10 -s 0 -T {threads} -p -a {params[0]} -o {output[0]} {input[0]}
         """
 
-# #
-# #
-#
-# featureCounts -Q 10 -s 0 -T ${THREADS} -p -a $GTF -o $QUANTDATA/geneCounts.out ${sampleList}
-#
-#
-#
-# cut -f1,7- $QUANTDATA/geneCounts.out | sed 1d > $QUANTDATA/geneCounts.txt
+
+
+rule feature_count_cut:
+    """feature_counts """
+    input:
+         os.path.join(RESULTS,"geneCounts.out")
+    output:
+        os.path.join(RESULTS,"geneCounts.txt")
+    log:
+        os.path.join(LOGS,"feature_count_cut.log")
+    conda:
+        os.path.join('..', 'envs','align.yaml')
+    threads:
+        1
+    shell:
+        """
+        cut -f1,7- {input[0]} | sed 1d > {output[0]}
+        """
+
+
+
+
+
+
+
+
