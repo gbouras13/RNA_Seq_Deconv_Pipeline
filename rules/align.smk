@@ -105,7 +105,7 @@ rule feature_count_tcga:
         mem_mb=BigJobMem
     shell:
         """
-        featureCounts -Q 10 -s 0 -T {threads} -p -a {params[0]} -o {output[0]} {input[0]}
+        featureCounts -Q 10 -s 0 -T {threads} -p -a {params[0]} -o {output[0]} {input}
         """
 
 
@@ -127,7 +127,7 @@ rule feature_count_ena:
         mem_mb=BigJobMem
     shell:
         """
-        featureCounts -Q 10 -s 0 -T {threads} -p -a {params[0]} -o {output[0]} {input[0]}
+        featureCounts -Q 10 -s 0 -T {threads} -p -a {params[0]} -o {output[0]} {input}
         """
 
 
