@@ -1,12 +1,11 @@
 """
 Snakefile for downloading STAR index for hg38
-snakemake -c 16 -s rules/Download_hg38.smk --use-conda --config STAR_DIR='/Users/a1667917/Documents/Pipelines'
-
+snakemake -c 16 -s rules/Download_hg38.smk --config STAR_DIR='/Users/a1667917/Documents/Pipelines'
 """
 import os
 
 # load default config
-configfile: os.path.join(workflow.basedir,  'config', 'config.yaml')
+configfile: os.path.join(workflow.basedir, '..', 'config', 'config.yaml')
 
 BigJobMem = config["BigJobMem"]
 BigJobCpu = config["BigJobCpu"]

@@ -6,7 +6,7 @@ nakemake -c 16 -s rules/create_star_indices_hg38.smk --use-conda --config STAR_D
 import os
 
 # load default config
-configfile: os.path.join(workflow.basedir,  'config', 'config.yaml')
+configfile: os.path.join(workflow.basedir, '..',  'config', 'config.yaml')
 
 BigJobMem = config["BigJobMem"]
 BigJobCpu = config["BigJobCpu"]
