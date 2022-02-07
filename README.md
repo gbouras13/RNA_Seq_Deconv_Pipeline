@@ -20,7 +20,9 @@ snakemake -c 1 -s rules/Download_hg38.smk --config HG38_dir='/hpcfs/users/a16679
 snakemake -c 1 -s rna_seq_runner.smk --use-conda --config Reads=Bams Output=test hg38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --conda-create-envs-only --conda-frontend conda
 ```
 
-3. The STAR indices need to be built - a 50 (TCGA) and 75 (EGA) read length index will be created (run on the compute node through slurm):
+3. The STAR indices need to be built - a 100 (TCGA) and 150 (EGA) read length index will be created (run on the compute node through slurm):
+
+* TCGA consists of 2x50 paired end reads, EGA is 2x75 paired end reads
 
 ```console
 snakemake -s rules/create_star_indices_hg38.smk --use-conda --config HG38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --profile tcga_wgs

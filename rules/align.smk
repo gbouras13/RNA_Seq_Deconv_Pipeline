@@ -4,12 +4,12 @@ rule tcga_align_star:
         os.path.join(TMP,"{sample}_trim_R1.fastq.gz"),
         os.path.join(TMP,"{sample}_trim_R2.fastq.gz")
     output:
-        os.path.join(STAR_BAMS,"{sample}_star_50_"),
-        os.path.join(STAR_BAMS,"{sample}_star_50_Aligned.sortedByCoord.out.bam")
+        os.path.join(STAR_BAMS,"{sample}_star_100_"),
+        os.path.join(STAR_BAMS,"{sample}_star_100_Aligned.sortedByCoord.out.bam")
     log:
         os.path.join(LOGS,"{sample}_star.log")
     params:
-        os.path.join(HG38_dir, 'hg38_50')
+        os.path.join(HG38_dir, 'hg38_100')
     conda:
         os.path.join('..', 'envs','align.yaml')
     threads:
@@ -33,12 +33,12 @@ rule enaalign_star:
         os.path.join(TMP,"{sample}_trim_R1.fastq.gz"),
         os.path.join(TMP,"{sample}_trim_R2.fastq.gz")
     output:
-        os.path.join(STAR_BAMS,"{sample}_star_75_"),
-        os.path.join(STAR_BAMS,"{sample}_star_75_Aligned.sortedByCoord.out.bam")
+        os.path.join(STAR_BAMS,"{sample}_star_150_"),
+        os.path.join(STAR_BAMS,"{sample}_star_150_Aligned.sortedByCoord.out.bam")
     log:
         os.path.join(LOGS,"{sample}_star.log")
     params:
-        os.path.join(HG38_dir, 'hg38_75')
+        os.path.join(HG38_dir, 'hg38_150')
     conda:
         os.path.join('..', 'envs','align.yaml')
     threads:
@@ -75,9 +75,9 @@ rule aggr_align_tcga:
 
 rule aggr_align_ena:
     input:
-        expand(os.path.join(STAR_BAMS,"{sample}_star_75_Aligned.sortedByCoord.out.bam"), sample = SAMPLES)
+        expand(os.path.join(STAR_BAMS,"{sample}_star_150_Aligned.sortedByCoord.out.bam"), sample = SAMPLES)
     output:
-        os.path.join(LOGS, "star_75_align.txt")
+        os.path.join(LOGS, "star_150_align.txt")
     threads:
         1
     resources:

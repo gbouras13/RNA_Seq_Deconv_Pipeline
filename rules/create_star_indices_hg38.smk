@@ -19,17 +19,17 @@ else:
     HG38_dir = config["HG38_dir"]
 
 # needs to be created before star is run
-if not os.path.exists(os.path.join(HG38_dir, 'hg38_50')):
-  os.makedirs(os.path.join(HG38_dir, 'hg38_50'))
+if not os.path.exists(os.path.join(HG38_dir, 'hg38_100')):
+  os.makedirs(os.path.join(HG38_dir, 'hg38_100'))
 
-if not os.path.exists(os.path.join(hg38_dir, 'hg38_75')):
-  os.makedirs(os.path.join(HG38_dir, 'hg38_75'))
+if not os.path.exists(os.path.join(hg38_dir, 'hg38_150')):
+  os.makedirs(os.path.join(HG38_dir, 'hg38_150'))
 
 
 rule all:
     input:
-        os.path.join(HG38_dir, "chr8_50_star_build.log"),
-        os.path.join(HG38_dir, "chr8_75_star_build.log")
+        os.path.join(HG38_dir, "chr8_100_star_build.log"),
+        os.path.join(HG38_dir, "chr8_150_star_build.log")
 
 rule create_50_indecies:
     """create index."""
@@ -37,9 +37,9 @@ rule create_50_indecies:
         os.path.join(HG38_dir, 'hg38.fa'),
         os.path.join(HG38_dir, 'hg38.ncbiRefSeq.gtf')
     output:
-        os.path.join(HG38_dir,"chr8_50_star_build.log")
+        os.path.join(HG38_dir,"chr8_100_star_build.log")
     params:
-        os.path.join(HG38_dir, 'hg38_50')
+        os.path.join(HG38_dir, 'hg38_100')
     threads:
         BigJobCpu
     conda:
@@ -52,7 +52,7 @@ rule create_50_indecies:
         --runMode genomeGenerate \
         --genomeDir {params[0]} \
         --genomeFastaFiles {input[0]} --sjdbGTFfile {input[1]} \
-        --sjdbOverhang 49
+        --sjdbOverhang 99
         touch {output[0]}
         """
 
@@ -62,9 +62,9 @@ rule create_75_indecies:
         os.path.join(HG38_dir, 'hg38.fa'),
         os.path.join(HG38_dir, 'hg38.ncbiRefSeq.gtf')
     output:
-        os.path.join(HG38_dir,"chr8_75_star_build.log")
+        os.path.join(HG38_dir,"chr8_150_star_build.log")
     params:
-        os.path.join(HG38_dir, 'hg38_75')
+        os.path.join(HG38_dir, 'hg38_150')
     threads:
         BigJobCpu
     conda:
@@ -77,6 +77,6 @@ rule create_75_indecies:
         --runMode genomeGenerate \
         --genomeDir {params[0]} \
         --genomeFastaFiles {input[0]} --sjdbGTFfile {input[1]} \
-        --sjdbOverhang 74
+        --sjdbOverhang 149
         touch {output[0]}
         """

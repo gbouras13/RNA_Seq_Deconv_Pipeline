@@ -10,9 +10,9 @@ PreprocessingFiles = [
 
 
 if TCGA:
-    AlignFiles = os.path.join(LOGS, "star_50_align.txt")
+    AlignFiles = os.path.join(LOGS, "star_100_align.txt")
 else:
-    AlignFiles = os.path.join(LOGS, "star_75_align.txt")
+    AlignFiles = os.path.join(LOGS, "star_150_align.txt")
 
 
 
