@@ -1,9 +1,5 @@
-
-#### if you want to only look at the unmapped READS
-#### I have decided to look at them all for now
-
 rule bam_sort:
-    """Sort Unmapped Reads"""
+    """Sort Reads"""
     input:
         os.path.join(READS, "{sample}.bam")
     output:

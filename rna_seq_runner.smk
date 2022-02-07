@@ -8,7 +8,7 @@ snakemake -c 16 -s /Users/a1667917/Documents/Pipelines/RNA_Seq_Deconv_Pipeline/r
 # on login node from pipeline dir
 snakemake -s rna_seq_runner.smk -c 1 --use-conda --config Reads=Bams Output=test hg38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --conda-create-envs-only --conda-frontend conda
 # to run
-snakemake -s rna_seq_runner.smk --use-conda --config Reads=RNA_EGA_Bams Output=RNA_EGA_Out HG38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --profile wgs_tcga
+snakemake -s rna_seq_runner.smk --use-conda --config Reads=TCGA_RNA_Total_Bams/ Output=RNA_EGA_Out HG38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' TCGA=True --profile wgs_tcga
 """
 
 
@@ -29,6 +29,10 @@ include: "rules/samples.smk"
 sampleReads = parseSamples(READS)
 SAMPLES = sampleReads.keys()
 
+# TCGA or EGA 
+
+TCGA = config['TCGA']
+
 # Import rules and functions
 include: "rules/targets.smk"
 include: "rules/bam_to_fastq.smk"
@@ -37,7 +41,8 @@ include: "rules/align.smk"
 
 rule all:
     input:
-        PreprocessingFiles
+        PreprocessingFiles,
+        AlignFiles
         # ## Assembly
         # AssemblyFiles,
         # ## Translated (nt-to-aa) search

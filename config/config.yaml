@@ -7,6 +7,7 @@
 
 Output:
 hg38_dir:
+TCGA: True
 
 ### STICK TO YOUR SYSTEM'S CPU:RAM RATIO FOR THESE
 BigJobMem: 150000     # Memory for MMSeqs in megabytes (e.g 64GB = 64000, recommend >= 64000)

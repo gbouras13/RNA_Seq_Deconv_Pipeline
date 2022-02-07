@@ -5,17 +5,17 @@ All target output files are declared here
 # Preprocessing files
 PreprocessingFiles = [
     os.path.join(LOGS, "bam_to_fastq.txt"),
-    os.path.join(FASTQC,"multiqc_report.html"),
-    os.path.join(LOGS, "star_align.txt")
+    os.path.join(FASTQC,"multiqc_report.html")
 ]
 
 
+if TCGA:
+    AlignFiles = os.path.join(LOGS, "star_50_align.txt")
+else:
+    AlignFiles = os.path.join(LOGS, "star_75_align.txt")
 
 
-# if skipAssembly:
-#     AssemblyFiles = []
-#     ContigAnnotFiles = []
-#     MappingFiles = []
+
 # else:
 #     # Assembly files
 #     AssemblyFiles = [
