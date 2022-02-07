@@ -29,6 +29,7 @@ RESULTS = os.path.join(OUTPUT, 'RESULTS')
 WORKDIR = os.path.join(OUTPUT, 'PROCESSING')
 TMP = os.path.join(WORKDIR, 'TMP')
 LOGS = os.path.join(OUTPUT, 'LOGS')
+STAR_BAMS = os.path.join(RESULTS, 'STAR_BAMS')
 
 # fastqc
 FASTQC = os.path.join(RESULTS, "FASTQC")
@@ -39,3 +40,6 @@ if not os.path.exists(RESULTS):
   # needs to be created before fastqc is run)
 if not os.path.exists(FASTQC):
   os.makedirs(FASTQC)
+
+ if not os.path.exists(STAR_BAMS):
+   os.makedirs(STAR_BAMS)

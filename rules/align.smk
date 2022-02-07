@@ -1,15 +1,15 @@
-rule align_star:
+rule tcga_align_star:
     """align to hg38 """
     input:
         os.path.join(TMP,"{sample}_trim_R1.fastq.gz"),
         os.path.join(TMP,"{sample}_trim_R2.fastq.gz")
     output:
-        os.path.join(RESULTS,"{sample}_star_"),
-        os.path.join(RESULTS,"{sample}_star_Aligned.sortedByCoord.out.bam")
+        os.path.join(STAR_BAMS,"{sample}_star_"),
+        os.path.join(STAR_BAMS,"{sample}_star_Aligned.sortedByCoord.out.bam")
     log:
         os.path.join(LOGS,"{sample}_star.log")
     params:
-        os.path.join(STAR_DIR, 'hg38_50')
+        os.path.join(hg38_dir, 'hg38_50')
     conda:
         os.path.join('..', 'envs','align.yaml')
     threads:
@@ -31,7 +31,7 @@ rule align_star:
 
 rule aggr_align:
     input:
-        expand(os.path.join(RESULTS,"{sample}_star_Aligned.sortedByCoord.out.bam"), sample = SAMPLES)
+        expand(os.path.join(STAR_BAMS,"{sample}_star_Aligned.sortedByCoord.out.bam"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "star_align.txt")
     threads:

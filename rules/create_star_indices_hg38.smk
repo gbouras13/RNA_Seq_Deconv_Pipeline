@@ -1,6 +1,9 @@
 """
 Snakefile for building STAR index for hg38
 snakemake -c 16 -s rules/create_star_indices_hg38.smk --use-conda --config hg38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes'
+
+snakemake -c 16 -s rules/create_star_indices_hg38.smk --use-conda --config hg38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --conda-create-envs-only --conda-frontend conda
+
 """
 import os
 

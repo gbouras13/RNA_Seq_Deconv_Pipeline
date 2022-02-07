@@ -12,7 +12,6 @@ PreprocessingFiles = [
 
 
 
-
 # if skipAssembly:
 #     AssemblyFiles = []
 #     ContigAnnotFiles = []

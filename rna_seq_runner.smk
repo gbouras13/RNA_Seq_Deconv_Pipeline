@@ -4,7 +4,7 @@ The snakefile that runs the pipeline.
 snakemake -c 16 -s RNA_Seq_Deconv_Pipeline/rna_seq_runner.smk --use-conda --config Reads=RNA_EGA_Bams Output=RNA_EGA_Out
 # from computer node
 snakemake -c 16 -s /Users/a1667917/Documents/Pipelines/RNA_Seq_Deconv_Pipeline/rna_seq_runner.smk --use-conda --config Reads=RNA_EGA_Bams Output=RNA_EGA_Out
-snakemake -c 16 -s /Users/a1667917/Documents/Pipelines/RNA_Seq_Deconv_Pipeline/rna_seq_runner.smk --use-conda --config Reads=RNA_EGA_Bams Output=RNA_EGA_Out STAR_DIR='/Users/a1667917/Documents/Pipelines'
+snakemake -c 16 -s /Users/a1667917/Documents/Pipelines/RNA_Seq_Deconv_Pipeline/rna_seq_runner.smk --use-conda --config Reads=RNA_EGA_Bams Output=RNA_EGA_Out hg38_dir='/Users/a1667917/Documents/Pipelines'
 """
 
 
@@ -13,6 +13,11 @@ configfile: os.path.join(workflow.basedir,  'config', 'config.yaml')
 
 BigJobMem = config["BigJobMem"]
 BigJobCpu = config["BigJobCpu"]
+
+if config['hg38_dir'] is None:
+    hg38_dir = "/hpcfs/users/a1667917/STAR_Ref_Genomes"
+else:
+    hg38_dir = config["hg38_dir"]
 
 ### DIRECTORIES
 include: "rules/directories.smk"
