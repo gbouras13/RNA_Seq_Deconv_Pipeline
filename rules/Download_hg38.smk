@@ -31,7 +31,7 @@ rule download_hg_38_fasta:
     """Rule to Download hg38 fasta."""
     output:
         os.path.join(hg38_dir,'download_hg38_fasta.dlflag'),
-        os.path.join(hg38_dir, 'hg38.fa.gz')
+        os.path.join(hg38_dir, 'hg38.fa')
     threads:
         BigJobCpu
     resources:
@@ -47,7 +47,7 @@ rule download_hg_38:
     """Rule to Download hg38 gtf."""
     output:
         os.path.join(hg38_dir,'download_hg38_gtf.dlflag'),
-        os.path.join(hg38_dir, 'hg38.ncbiRefSeq.gtf.gz')
+        os.path.join(hg38_dir, 'hg38.ncbiRefSeq.gtf')
     threads:
         BigJobCpu
     resources:
