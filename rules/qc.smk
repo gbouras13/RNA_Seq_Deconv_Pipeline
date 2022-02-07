@@ -24,14 +24,12 @@ rule fastqc:
     input:
         fwd = expand(os.path.join(TMP,"{sample}_trim_R1.fastq.gz"), sample = SAMPLES),
         rev = expand(os.path.join(TMP,"{sample}_trim_R2.fastq.gz"), sample = SAMPLES),
-        TMP
+        dir = TMP
     output:
         os.path.join(MULTIQC,"multiqc_report.html")
-    log:
-        os.path.join(LOGS,"fastqc.log")
     params:
-        FASTQC,
-        MULTIQC
+        fastqc = FASTQC,
+        multiqc = MULTIQC
     conda:
         os.path.join('..', 'envs','qc.yaml')
     threads:
@@ -40,9 +38,9 @@ rule fastqc:
         mem_mb=BigJobMem
     shell:
         """
-        fastqc -t {threads} -o {params[0]} {input.fwd}
-        fastqc -t {threads} -o {params[0]} {input.rev}
-        multiqc {params[0]} {input[2]} -o {params[1]}
+        fastqc -t {threads} -o {params.fastqc} {input.fwd}
+        fastqc -t {threads} -o {params.fastqc} {input.rev}
+        multiqc {params.fastqc} {input.dir} -o {params.multiqc}
         """
 
 
