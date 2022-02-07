@@ -88,35 +88,27 @@ rule aggr_align_ena:
         """
 
 
-
-
-# rule feature_count:
-#     """feature_counts """
-#     input:
-#         os.path.join(TMP,"{sample}_trim_R1.fastq.gz"),
-#         os.path.join(TMP,"{sample}_trim_R2.fastq.gz")
-#     output:
-#         os.path.join(TMP,"{sample}_star")
-#     log:
-#         os.path.join(LOGS,"{sample}_star.log")
-#     params:
-#         STAR_DIR
-#     conda:
-#         os.path.join('..', 'envs','align.yaml')
-#     threads:
-#         BigJobCpu
-#     resources:
-#         mem_mb=BigJobMem
-#     shell:
-#         """
-#         STAR \
-#             --runThreadN {threads} \
-#             --genomeDir {params[0]} \
-#             --readFilesIn {input[0]} {input[1]} \
-#             --readFilesCommand gunzip -c \
-#             --outFileNamePrefix {output[0]} \
-#             --outSAMtype BAM SortedByCoordinate
-#         """
+rule feature_count_ena:
+    """feature_counts """
+    input:
+        expand(os.path.join(STAR_BAMS,"{sample}_star_150_Aligned.sortedByCoord.out.bam"), sample = SAMPLES)
+    output:
+        os.path.join(RESULTS,"geneCounts.out")
+    log:
+        os.path.join(LOGS,"{sample}_star.log")
+    params:
+        os.path.join(HG38_dir, 'hg38.ncbiRefSeq.gtf')
+    conda:
+        os.path.join('..', 'envs','align.yaml')
+    threads:
+        BigJobCpu
+    resources:
+        mem_mb=BigJobMem
+    shell:
+        """
+        featureCounts -Q 10 -s 0 -T {threads} -p -a {params[0]} -o {output[0]} {input[0]}
+        """
+        
 # #
 # #
 #
