@@ -19,7 +19,6 @@ else:
 if not os.path.exists(os.path.join(HG38_dir)):
   os.makedirs(os.path.join(HG38_dir))
 
-
 rule all:
     input:
         os.path.join(HG38_dir, 'download_hg38_fasta.dlflag'),

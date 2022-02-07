@@ -42,3 +42,6 @@ if not os.path.exists(FASTQC):
 # needs to be created before alignment
 if not os.path.exists(STAR_BAMS):
   os.makedirs(STAR_BAMS)
+# needs to be created for fastqc 
+if not os.path.exists(TMP):
+  os.makedirs(TMP)
