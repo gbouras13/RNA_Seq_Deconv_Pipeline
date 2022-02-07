@@ -13,10 +13,6 @@ if config['Output'] is None:
 else:
     OUTPUT = config['Output']
 
-if config['STAR_DIR'] is None:
-    STAR_DIR = "/hpcfs/users/a1667917/STAR_Ref_Genomes/hg38"
-else:
-    STAR_DIR = config['STAR_DIR']
 
 ### DATABASE SUBDIRs
 CONPATH = os.path.join(DBDIR, "contaminants")

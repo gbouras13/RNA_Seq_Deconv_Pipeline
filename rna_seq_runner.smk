@@ -4,7 +4,11 @@ The snakefile that runs the pipeline.
 snakemake -c 16 -s RNA_Seq_Deconv_Pipeline/rna_seq_runner.smk --use-conda --config Reads=RNA_EGA_Bams Output=RNA_EGA_Out
 # from computer node
 snakemake -c 16 -s /Users/a1667917/Documents/Pipelines/RNA_Seq_Deconv_Pipeline/rna_seq_runner.smk --use-conda --config Reads=RNA_EGA_Bams Output=RNA_EGA_Out
-snakemake -c 16 -s /Users/a1667917/Documents/Pipelines/RNA_Seq_Deconv_Pipeline/rna_seq_runner.smk --use-conda --config Reads=RNA_EGA_Bams Output=RNA_EGA_Out hg38_dir='/Users/a1667917/Documents/Pipelines'
+# HPC
+
+snakemake -s rna_seq_runner.smk --use-conda --config Reads=RNA_EGA_Bams Output=RNA_EGA_Out hg38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --conda-create-envs-only --conda-frontend conda
+# to run
+snakemake -s rna_seq_runner.smk --use-conda --config Reads=RNA_EGA_Bams Output=RNA_EGA_Out hg38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --profile wgs_tcga
 """
 
 
@@ -14,7 +18,7 @@ configfile: os.path.join(workflow.basedir,  'config', 'config.yaml')
 BigJobMem = config["BigJobMem"]
 BigJobCpu = config["BigJobCpu"]
 
-if config['hg38_dir'] is None:
+if config["hg_38_dir"] is None:
     hg38_dir = "/hpcfs/users/a1667917/STAR_Ref_Genomes"
 else:
     hg38_dir = config["hg38_dir"]
