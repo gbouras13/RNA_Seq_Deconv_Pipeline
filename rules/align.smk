@@ -4,12 +4,12 @@ rule tcga_align_star:
         os.path.join(TMP,"{sample}_trim_R1.fastq.gz"),
         os.path.join(TMP,"{sample}_trim_R2.fastq.gz")
     output:
-        os.path.join(STAR_BAMS,"{sample}_star_100_"),
         os.path.join(STAR_BAMS,"{sample}_star_100_Aligned.sortedByCoord.out.bam")
     log:
         os.path.join(LOGS,"{sample}_star.log")
     params:
-        os.path.join(HG38_dir, 'hg38_100')
+        os.path.join(HG38_dir, 'hg38_100'),
+        os.path.join(STAR_BAMS,"{sample}_star_100_")
     conda:
         os.path.join('..', 'envs','align.yaml')
     threads:
@@ -23,7 +23,7 @@ rule tcga_align_star:
             --genomeDir {params[0]} \
             --readFilesIn {input[0]} {input[1]} \
             --readFilesCommand gunzip -c \
-            --outFileNamePrefix {output[0]} \
+            --outFileNamePrefix {params[1]} \
             --outSAMtype BAM SortedByCoordinate
         """
 
@@ -33,12 +33,12 @@ rule enaalign_star:
         os.path.join(TMP,"{sample}_trim_R1.fastq.gz"),
         os.path.join(TMP,"{sample}_trim_R2.fastq.gz")
     output:
-        os.path.join(STAR_BAMS,"{sample}_star_150_"),
         os.path.join(STAR_BAMS,"{sample}_star_150_Aligned.sortedByCoord.out.bam")
     log:
         os.path.join(LOGS,"{sample}_star.log")
     params:
-        os.path.join(HG38_dir, 'hg38_150')
+        os.path.join(HG38_dir, 'hg38_150'),
+        os.path.join(STAR_BAMS,"{sample}_star_150_")
     conda:
         os.path.join('..', 'envs','align.yaml')
     threads:
@@ -52,7 +52,7 @@ rule enaalign_star:
             --genomeDir {params[0]} \
             --readFilesIn {input[0]} {input[1]} \
             --readFilesCommand gunzip -c \
-            --outFileNamePrefix {output[0]} \
+            --outFileNamePrefix {params[1]} \
             --outSAMtype BAM SortedByCoordinate
         """
 
