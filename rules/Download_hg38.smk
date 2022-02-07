@@ -58,6 +58,8 @@ rule download_hg_38:
         touch {output[0]}
         """
 
+# no -C on the hpc
+
 rule unzip:
     """gunzip files."""
     input:
@@ -73,7 +75,7 @@ rule unzip:
         mem_mb=BigJobMem
     shell:
         """
-        gunzip {input[0]} -C {output[0]}
-        gunzip {input[1]} -C {output[1]}
+        gunzip {input[0]}
+        gunzip {input[1]}
         touch {output[2]}
         """
