@@ -61,9 +61,9 @@ rule enaalign_star:
 
 rule aggr_align_tcga:
     input:
-        expand(os.path.join(STAR_BAMS,"{sample}_star_50_Aligned.sortedByCoord.out.bam"), sample = SAMPLES)
+        expand(os.path.join(STAR_BAMS,"{sample}_star_100_Aligned.sortedByCoord.out.bam"), sample = SAMPLES)
     output:
-        os.path.join(LOGS, "star_50_align.txt")
+        os.path.join(LOGS, "star_100_align.txt")
     threads:
         1
     resources:
