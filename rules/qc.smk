@@ -26,11 +26,12 @@ rule fastqc:
         expand(os.path.join(TMP,"{sample}_trim_R2.fastq.gz"), sample = SAMPLES),
         TMP
     output:
-        directory(FASTQC),
-        os.path.join(FASTQC,"multiqc_report.html"),
-        directory(MULTIQC)
+        os.path.join(MULTIQC,"multiqc_report.html")
     log:
         os.path.join(LOGS,"fastqc.log")
+    params:
+        FASTQC,
+        MULTIQC
     conda:
         os.path.join('..', 'envs','qc.yaml')
     threads:
@@ -41,7 +42,7 @@ rule fastqc:
         """
         fastqc -t {threads} -o {output[0]} {input[0]}
         fastqc -t {threads} -o {output[0]} {input[1]}
-        multiqc {output[0]} {input[2]} -o {output[2]}
+        multiqc {params[0]} {input[2]} -o {params[1]}
         """
 
 

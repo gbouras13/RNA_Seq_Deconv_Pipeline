@@ -5,7 +5,7 @@ All target output files are declared here
 # Preprocessing files
 PreprocessingFiles = [
     os.path.join(LOGS, "bam_to_fastq.txt"),
-    os.path.join(FASTQC,"multiqc_report.html")
+    os.path.join(MULTIQC,"multiqc_report.html")
 ]
 
 
