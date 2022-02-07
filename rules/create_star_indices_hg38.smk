@@ -22,7 +22,7 @@ else:
 if not os.path.exists(os.path.join(HG38_dir, 'hg38_100')):
   os.makedirs(os.path.join(HG38_dir, 'hg38_100'))
 
-if not os.path.exists(os.path.join(hg38_dir, 'hg38_150')):
+if not os.path.exists(os.path.join(HG38_dir, 'hg38_150')):
   os.makedirs(os.path.join(HG38_dir, 'hg38_150'))
 
 
