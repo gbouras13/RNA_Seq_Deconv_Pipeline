@@ -1,7 +1,6 @@
 """
 Snakefile for building STAR index for hg38
-nakemake -c 16 -s rules/create_star_indices_hg38.smk --use-conda --config STAR_DIR='/Users/a1667917/Documents/Pipelines'
-
+snakemake -c 16 -s rules/create_star_indices_hg38.smk --use-conda --config STAR_DIR='/Users/a1667917/Documents/Pipelines'
 """
 import os
 
