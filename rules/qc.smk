@@ -27,7 +27,8 @@ rule fastqc:
         TMP
     output:
         directory(FASTQC),
-        os.path.join(FASTQC,"multiqc_report.html")
+        os.path.join(FASTQC,"multiqc_report.html"),
+        directory(MULTIQC)
     log:
         os.path.join(LOGS,"fastqc.log")
     conda:
@@ -40,8 +41,12 @@ rule fastqc:
         """
         fastqc -t {threads} -o {output[0]} {input[0]}
         fastqc -t {threads} -o {output[0]} {input[1]}
-        multiqc {output[0]} {input[2]} -o {output[0]}
+        multiqc {output[0]} {input[2]} -o {output[2]}
         """
+
+
+
+
 
 #### aggregation rule
 

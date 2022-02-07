@@ -32,6 +32,7 @@ STAR_BAMS = os.path.join(RESULTS, 'STAR_BAMS')
 
 # fastqc
 FASTQC = os.path.join(RESULTS, "FASTQC")
+MULTIQC = os.path.join(FASTQC, "MULTIQC")
 
 # needs to be created before fastqc is run
 if not os.path.exists(RESULTS):
@@ -39,6 +40,9 @@ if not os.path.exists(RESULTS):
 # needs to be created before fastqc is run)
 if not os.path.exists(FASTQC):
   os.makedirs(FASTQC)
+# needs to be created before fastqc is run)
+if not os.path.exists(MULTIQC):
+  os.makedirs(MULTIQC)
 # needs to be created before alignment
 if not os.path.exists(STAR_BAMS):
   os.makedirs(STAR_BAMS)
