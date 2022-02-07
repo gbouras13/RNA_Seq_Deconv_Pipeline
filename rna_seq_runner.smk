@@ -17,6 +17,9 @@ configfile: os.path.join(workflow.basedir,  'config', 'config.yaml')
 
 BigJobMem = config["BigJobMem"]
 BigJobCpu = config["BigJobCpu"]
+# STAR can only use 16 threads on hpc for some reason
+MediumJobCpu = config["MediumJobCpu"]
+
 
 ### DIRECTORIES
 include: "rules/directories.smk"

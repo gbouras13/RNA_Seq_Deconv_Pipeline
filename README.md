@@ -29,8 +29,9 @@ snakemake -s rules/create_star_indices_hg38.smk --use-conda --config HG38_dir='/
 4. Run the pipeline
 
 ```console
-snakemake -s rna_seq_runner.smk --use-conda --config Reads={path_to}/Bams Output=RNA_TCGA_Out HG38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --profile wgs_tcga
+snakemake -s rna_seq_runner.smk --use-conda --config Reads={path_to}/Bams Output=RNA_TCGA_Out HG38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' TCGA=True --profile wgs_tcga
 ```
 
 * With a Slurm profile (see https://snakemake.readthedocs.io/en/stable/executing/cli.html https://github.com/Snakemake-Profiles/slurm https://fame.flinders.edu.au/blog/2021/08/02/snakemake-profiles-updated)
 * You will need to cd to the pipeline directory in your jobscript before running if you want to run this offline (to use the premade conda envs)
+* Use the TCGA=True flag for TCGA bams, TCGA=False for ENA

@@ -13,7 +13,7 @@ rule tcga_align_star:
     conda:
         os.path.join('..', 'envs','align.yaml')
     threads:
-        BigJobCpu
+        MediumJobCpu
     resources:
         mem_mb=BigJobMem
     shell:
@@ -42,7 +42,7 @@ rule enaalign_star:
     conda:
         os.path.join('..', 'envs','align.yaml')
     threads:
-        BigJobCpu
+        MediumJobCpu
     resources:
         mem_mb=BigJobMem
     shell:
@@ -65,7 +65,7 @@ rule aggr_align_tcga:
     output:
         os.path.join(LOGS, "star_50_align.txt")
     threads:
-        BigJobCpu
+        1
     resources:
         mem_mb=BigJobMem
     shell:
@@ -79,7 +79,7 @@ rule aggr_align_ena:
     output:
         os.path.join(LOGS, "star_75_align.txt")
     threads:
-        BigJobCpu
+        1
     resources:
         mem_mb=BigJobMem
     shell:
