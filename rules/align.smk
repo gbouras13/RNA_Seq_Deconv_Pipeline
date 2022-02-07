@@ -9,7 +9,7 @@ rule tcga_align_star:
     log:
         os.path.join(LOGS,"{sample}_star.log")
     params:
-        os.path.join(hg38_dir, 'hg38_50')
+        os.path.join(HG38_dir, 'hg38_50')
     conda:
         os.path.join('..', 'envs','align.yaml')
     threads:

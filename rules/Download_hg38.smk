@@ -1,6 +1,6 @@
 """
 Snakefile for downloading STAR index for hg38
-snakemake -c 16 -s rules/Download_hg38.smk --config hg38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes'
+snakemake -c 1 -s rules/Download_hg38.smk --config HG38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes'
 """
 import os
 
@@ -10,27 +10,27 @@ configfile: os.path.join(workflow.basedir, '..', 'config', 'config.yaml')
 BigJobMem = config["BigJobMem"]
 BigJobCpu = config["BigJobCpu"]
 
-if config['hg38_dir'] is None:
-    hg38_dir = "/hpcfs/users/a1667917/STAR_Ref_Genomes"
+if config['HG38_dir'] is None:
+    HG38_dir = "/hpcfs/users/a1667917/STAR_Ref_Genomes"
 else:
-    hg38_dir = config["hg38_dir"]
+    HG38_dir = config["HG38_dir"]
 
 # needs to be created before (should exist)
-if not os.path.exists(os.path.join(hg38_dir)):
-  os.makedirs(os.path.join(hg38_dir))
+if not os.path.exists(os.path.join(HG38_dir)):
+  os.makedirs(os.path.join(HG38_dir))
 
 
 rule all:
     input:
-        os.path.join(hg38_dir, 'download_hg38_fasta.dlflag'),
-        os.path.join(hg38_dir, 'download_hg38_gtf.dlflag'),
-        os.path.join(hg38_dir, 'unzip.dlflag')
+        os.path.join(HG38_dir, 'download_hg38_fasta.dlflag'),
+        os.path.join(HG38_dir, 'download_hg38_gtf.dlflag'),
+        os.path.join(HG38_dir, 'unzip.dlflag')
 
 rule download_hg_38_fasta:
     """Rule to Download hg38 fasta."""
     output:
-        os.path.join(hg38_dir,'download_hg38_fasta.dlflag'),
-        os.path.join(hg38_dir, 'hg38.fa.gz')
+        os.path.join(HG38_dir,'download_hg38_fasta.dlflag'),
+        os.path.join(HG38_dir, 'hg38.fa.gz')
     threads:
         BigJobCpu
     resources:
@@ -45,8 +45,8 @@ rule download_hg_38_fasta:
 rule download_hg_38:
     """Rule to Download hg38 gtf."""
     output:
-        os.path.join(hg38_dir,'download_hg38_gtf.dlflag'),
-        os.path.join(hg38_dir, 'hg38.ncbiRefSeq.gtf.gz')
+        os.path.join(HG38_dir,'download_hg38_gtf.dlflag'),
+        os.path.join(HG38_dir, 'hg38.ncbiRefSeq.gtf.gz')
     threads:
         BigJobCpu
     resources:

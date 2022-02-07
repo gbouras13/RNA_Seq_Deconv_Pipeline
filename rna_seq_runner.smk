@@ -8,7 +8,7 @@ snakemake -c 16 -s /Users/a1667917/Documents/Pipelines/RNA_Seq_Deconv_Pipeline/r
 # on login node from pipeline dir
 snakemake -s rna_seq_runner.smk -c 1 --use-conda --config Reads=Bams Output=test hg38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --conda-create-envs-only --conda-frontend conda
 # to run
-snakemake -s rna_seq_runner.smk --use-conda --config Reads=RNA_EGA_Bams Output=RNA_EGA_Out hg38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --profile wgs_tcga
+snakemake -s rna_seq_runner.smk --use-conda --config Reads=RNA_EGA_Bams Output=RNA_EGA_Out HG38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --profile wgs_tcga
 """
 
 
@@ -23,7 +23,6 @@ include: "rules/directories.smk"
 
 READS = config['Reads']
 OUTPUT = config['Output']
-hg38_dir = config['HG38_dir']
 
 # Parse the samples and read files
 include: "rules/samples.smk"
