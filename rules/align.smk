@@ -95,7 +95,7 @@ rule feature_count_ena:
     output:
         os.path.join(RESULTS,"geneCounts.out")
     log:
-        os.path.join(LOGS,"{sample}_star.log")
+        os.path.join(LOGS,"feature_count.log")
     params:
         os.path.join(HG38_dir, 'hg38.ncbiRefSeq.gtf')
     conda:
@@ -108,7 +108,7 @@ rule feature_count_ena:
         """
         featureCounts -Q 10 -s 0 -T {threads} -p -a {params[0]} -o {output[0]} {input[0]}
         """
-        
+
 # #
 # #
 #
