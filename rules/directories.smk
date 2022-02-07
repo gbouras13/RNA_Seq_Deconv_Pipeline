@@ -41,4 +41,4 @@ if not os.path.exists(FASTQC):
   os.makedirs(FASTQC)
 
  if not os.path.exists(STAR_BAMS):
-   os.makedirs(STAR_BAMS)
+  os.makedirs(STAR_BAMS)
