@@ -87,6 +87,27 @@ rule aggr_align_ena:
         touch {output[0]}
         """
 
+rule feature_count_tcga:
+    """feature_counts """
+    input:
+        expand(os.path.join(STAR_BAMS,"{sample}_star_100_Aligned.sortedByCoord.out.bam"), sample = SAMPLES)
+    output:
+        os.path.join(RESULTS,"geneCounts.out")
+    log:
+        os.path.join(LOGS,"feature_count.log")
+    params:
+        os.path.join(HG38_dir, 'hg38.ncbiRefSeq.gtf')
+    conda:
+        os.path.join('..', 'envs','align.yaml')
+    threads:
+        BigJobCpu
+    resources:
+        mem_mb=BigJobMem
+    shell:
+        """
+        featureCounts -Q 10 -s 0 -T {threads} -p -a {params[0]} -o {output[0]} {input[0]}
+        """
+
 
 rule feature_count_ena:
     """feature_counts """

@@ -46,7 +46,8 @@ include: "rules/align.smk"
 rule all:
     input:
         PreprocessingFiles,
-        AlignFiles
+        AlignFiles,
+        FeatureCountFiles
         # ## Assembly
         # AssemblyFiles,
         # ## Translated (nt-to-aa) search

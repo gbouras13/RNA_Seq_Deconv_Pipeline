@@ -52,7 +52,7 @@ rule create_50_indecies:
         --runMode genomeGenerate \
         --genomeDir {params[0]} \
         --genomeFastaFiles {input[0]} --sjdbGTFfile {input[1]} \
-        --sjdbOverhang 99
+        --sjdbOverhang 95
         touch {output[0]}
         """
 

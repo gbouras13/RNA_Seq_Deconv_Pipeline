@@ -14,6 +14,11 @@ if TCGA:
 else:
     AlignFiles = os.path.join(LOGS, "star_150_align.txt")
 
+FeatureCountFiles = [
+    os.path.join(RESULTS,"geneCounts.out")
+]
+
+
 
 
 # else:
