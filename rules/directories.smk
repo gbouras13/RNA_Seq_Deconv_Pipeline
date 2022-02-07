@@ -7,14 +7,15 @@ DBDIR = 'Databases'
 
 ### OUTPUT DIRECTORY
 if config['Output'] is None:
-  OUTPUT = 'wgs_tcga_out'
+  OUTPUT = 'rna_tcga_out'
 else:
   OUTPUT = config['Output']
 
 if config['hg38_dir'] is None:
-  HG38_dir = "/hpcfs/users/a1667917/STAR_Ref_Genomes"
+  HG38_dir = '/hpcfs/users/a1667917/STAR_Ref_Genomes'
 else:
   HG38_dir = config['hg38_dir']
+
 
 ### DATABASE SUBDIRs
 CONPATH = os.path.join(DBDIR, "contaminants")
