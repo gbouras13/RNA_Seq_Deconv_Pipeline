@@ -31,8 +31,6 @@ rule download_salmon_index:
     threads:
         1
     script:
-        """
-        os.path.join('..', 'scripts','refgenie.py')
-        """
+        '../scripts/refgenie.py'
 
 
