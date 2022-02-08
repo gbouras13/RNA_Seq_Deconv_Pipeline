@@ -57,7 +57,7 @@ rule map_salmon_ena:
     resources:
         mem_mb=BigJobMem
     shell:
-        "salmon quant -i {params[0]} -l A -a {input[0]} -p {threads} -o {params[1]}"
+        "salmon quant -t {params[0]} -l A -a {input[0]} -p {threads} -o {params[1]}"
 
 rule aggr_salmon_ena:
     input:
@@ -93,7 +93,7 @@ rule map_salmon_tcga:
     resources:
         mem_mb=BigJobMem
     shell:
-        "salmon quant -i {params[0]} -l A -a {input[0]} -p {threads} -o {params[1]}"
+        "salmon quant -t {params[0]} -l A -a {input[0]} -p {threads} -o {params[1]}"
 
 rule aggr_salmon_tcga:
     input:
