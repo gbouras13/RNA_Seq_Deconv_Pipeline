@@ -14,6 +14,9 @@ import os
 # load default config
 configfile: os.path.join(workflow.basedir, '..', 'config', 'config.yaml')
 
+BigJobMem = config["BigJobMem"]
+BigJobCpu = config["BigJobCpu"]
+
 if config['Salmon_dir'] is None:
     Salmon_dir = "/hpcfs/users/a1667917/Salmon_Ref_Genomes"
 else:
