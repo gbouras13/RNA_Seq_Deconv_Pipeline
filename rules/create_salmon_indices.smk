@@ -60,7 +60,7 @@ rule concat:
         cat {input[0]}  {input[1]} | gzip > {output[0]}
         """
 
-# -k 25 for the smaller reads (should improve the sensitivity)
+## -k 25 for the smaller reads (should improve the sensitivity)
 
 rule salmon_index:
     """create salmon index."""

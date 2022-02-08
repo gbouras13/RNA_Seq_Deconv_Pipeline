@@ -16,6 +16,10 @@ if config['hg38_dir'] is None:
 else:
   HG38_dir = config['hg38_dir']
 
+if config['Salmon_dir'] is None:
+  Salmon_dir = '/hpcfs/users/a1667917/Salmon_Ref_Genomes'
+else:
+  Salmon_dir = config['Salmon_dir']
 
 ### DATABASE SUBDIRs
 CONPATH = os.path.join(DBDIR, "contaminants")
@@ -29,6 +33,7 @@ WORKDIR = os.path.join(OUTPUT, 'PROCESSING')
 TMP = os.path.join(WORKDIR, 'TMP')
 LOGS = os.path.join(OUTPUT, 'LOGS')
 STAR_BAMS = os.path.join(RESULTS, 'STAR_BAMS')
+SALMON_OUTPUT = os.path.join(RESULTS, 'SALMON_OUTPUT')
 
 # fastqc
 FASTQC = os.path.join(RESULTS, "FASTQC")
