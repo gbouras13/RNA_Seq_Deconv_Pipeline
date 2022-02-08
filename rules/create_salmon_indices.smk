@@ -86,7 +86,7 @@ rule salmon_index:
         mem_mb=BigJobMem
     shell:
         """
-        salmon index -p {threads} --gencode -t {input[0]}  -d {input[1]} -i {params[0]} -k 31
+        salmon index -p {threads} --gencode -t {input[0]}  -d {input[1]} -i {params[0]} 
         touch {output[0]}
         """
 
