@@ -90,6 +90,23 @@ rule salmon_index:
         touch {output[0]}
         """
 
+rule transcript_for_star_salmon:
+    """create salmon index."""
+    input:
+        os.path.join(HG38_dir, 'GRCh38.primary_assembly.genome.fa'),
+        os.path.join(HG38_dir, 'gencode.v39.primary_assembly.annotation.gtf')
+    output:
+        os.path.join(Salmon_dir, 'star_transcripts.fa')
+    threads:
+        BigJobCpu
+    conda:
+        os.path.join('..', 'envs','salmon.yaml')
+    resources:
+        mem_mb=BigJobMem
+    shell:
+        """
+        gffread -w {output[0]} -g {input[0]} {input[1]}
+        """
 
 
 

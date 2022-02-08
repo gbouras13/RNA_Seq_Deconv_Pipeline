@@ -84,7 +84,7 @@ rule map_salmon_tcga:
     log:
         os.path.join(LOGS,"{sample}_salmon.log")
     params:
-        os.path.join(Salmon_dir, 'gencode.v39.transcripts.fa'),
+        os.path.join(Salmon_dir, 'star_transcripts.fa'),
         os.path.join(SALMON_OUTPUT, "{sample}")
     conda:
         os.path.join('..', 'envs','salmon.yaml')
