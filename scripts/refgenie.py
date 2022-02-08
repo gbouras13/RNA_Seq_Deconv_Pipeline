@@ -27,7 +27,7 @@ def assert_refgenie_asset_exists(
     rgc.seek(genome=genome, asset=asset, tag=tag, seek_key=seek_key)
 
 
-snakemake.output[0].touch()
+Path(snakemake.output[0]).touch()
 
 assert_refgenie_asset_exists(
     genome ="hg38",
@@ -35,5 +35,5 @@ assert_refgenie_asset_exists(
     refgenie_config = snakemake.input[0]
 )
 
-snakemake.output[1].touch()
+Path(snakemake.output[1]).touch()
 
