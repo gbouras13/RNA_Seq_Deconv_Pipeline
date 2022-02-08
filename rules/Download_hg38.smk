@@ -31,8 +31,8 @@ rule download_hg_38_fasta:
         1
     shell:
         """
-        wget -c "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz" -O hg38.fa.gz
-        mv "hg38.fa.gz" {output[1]}
+        wget -c "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_39/GRCh38.primary_assembly.genome.fa.gz" -O GRCh38.primary_assembly.genome.fa.gz
+        mv "GRCh38.primary_assembly.genome.fa.gz" {output[1]}
         touch {output[0]}
         """
 
@@ -45,8 +45,8 @@ rule download_hg_38_gtf:
         1
     shell:
         """
-        wget -c "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/genes/hg38.knownGene.gtf.gz" -O  hg38.knownGene.gtf.gz
-        mv "hg38.knownGene.gtf.gz" {output[1]}
+        wget -c "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_39/gencode.v39.primary_assembly.annotation.gtf.gz" -O  gencode.v39.primary_assembly.annotation.gtf.gz
+        mv "gencode.v39.primary_assembly.annotation.gtf.gz" {output[1]}
         touch {output[0]}
         """
 
@@ -55,11 +55,11 @@ rule download_hg_38_gtf:
 rule unzip:
     """gunzip files."""
     input:
-        os.path.join(HG38_dir, 'hg38.fa.gz'),
-        os.path.join(HG38_dir, 'hg38.knownGene.gtf.gz')
+        os.path.join(HG38_dir, 'GRCh38.primary_assembly.genome.fa.gz'),
+        os.path.join(HG38_dir, 'gencode.v39.primary_assembly.annotation.gtf.gz')
     output:
-        os.path.join(HG38_dir, 'hg38.fa'),
-        os.path.join(HG38_dir, 'hg38.knownGene.gtf'),
+        os.path.join(HG38_dir, 'GRCh38.primary_assembly.genome.fa'),
+        os.path.join(HG38_dir, 'gencode.v39.primary_assembly.annotation.gtf'),
         os.path.join(HG38_dir, 'unzip.dlflag')
     threads:
         1

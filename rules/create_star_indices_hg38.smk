@@ -34,8 +34,8 @@ rule all:
 rule create_50_indecies:
     """create index."""
     input:
-        os.path.join(HG38_dir, 'hg38.fa'),
-        os.path.join(HG38_dir, 'hg38.knownGene.gtf')
+        os.path.join(HG38_dir, 'GRCh38.primary_assembly.genome.fa'),
+        os.path.join(HG38_dir, 'gencode.v39.primary_assembly.annotation.gtf')
     output:
         os.path.join(HG38_dir,"hg38_100_star_build.log")
     params:
@@ -59,8 +59,8 @@ rule create_50_indecies:
 rule create_75_indecies:
     """create index."""
     input:
-        os.path.join(HG38_dir, 'hg38.fa'),
-        os.path.join(HG38_dir, 'hg38.knownGene.gtf')
+        os.path.join(HG38_dir, 'GRCh38.primary_assembly.genome.fa'),
+        os.path.join(HG38_dir, 'gencode.v39.primary_assembly.annotation.gtf')
     output:
         os.path.join(HG38_dir,"hg38_150_star_build.log")
     params:
