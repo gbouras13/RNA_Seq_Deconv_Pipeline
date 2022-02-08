@@ -20,7 +20,7 @@ rule map_salmon:
     shell:
         "salmon quant -i {params[0]} -l A -1 {input[0]} -2 {input[1]} --validateMappings -p {threads} -o {params[1]}"
 
-rule aggr_align_ena:
+rule aggr_salmon:
     input:
         expand(os.path.join(SALMON_OUTPUT,"{sample}", "quant.sf"), sample = SAMPLES)
     output:
