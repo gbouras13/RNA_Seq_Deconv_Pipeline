@@ -11,10 +11,10 @@ if config['Output'] is None:
 else:
   OUTPUT = config['Output']
 
-if config['hg38_dir'] is None:
+if config['HG38_dir'] is None:
   HG38_dir = '/hpcfs/users/a1667917/STAR_Ref_Genomes'
 else:
-  HG38_dir = config['hg38_dir']
+  HG38_dir = config['HG38_dir']
 
 if config['Salmon_dir'] is None:
   Salmon_dir = '/hpcfs/users/a1667917/Salmon_Ref_Genomes'

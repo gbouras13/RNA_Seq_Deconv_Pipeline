@@ -3,7 +3,7 @@ Snakefile for building Salmon index for encode v39
 
 snakemake -s rules/create_salmon_indices.smk --use-conda --config Salmon_dir='/hpcfs/users/a1667917/Salmon_Ref_Genomes'
 
-snakemake -c 1 -s rules/create_salmon_indices.smk --use-conda --config Salmon_dir='/hpcfs/users/a1667917/Salmon_Ref_Genomes' --conda-create-envs-only --conda-frontend conda
+snakemake -c 1 -s rules/create_salmon_indices.smk --use-conda --config  --conda-create-envs-only --conda-frontend conda
 
 """
 
