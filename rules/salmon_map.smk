@@ -1,5 +1,3 @@
-from fastqs
-
 rule map_salmon:
     """map salmon"""
     input:
