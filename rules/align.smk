@@ -130,8 +130,6 @@ rule feature_count_ena:
         featureCounts -Q 10 -s 0 -T {threads} -p -a {params[0]} -o {output[0]} {input}
         """
 
-
-
 rule feature_count_cut_ena:
     """feature_counts """
     input:

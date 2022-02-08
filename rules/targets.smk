@@ -13,7 +13,8 @@ if TCGA:
     AlignFiles = os.path.join(LOGS, "star_100_align.txt")
     FeatureCountFiles = [
     os.path.join(RESULTS,"geneCounts_tcga.out"),
-    os.path.join(RESULTS,"geneCounts_tcga.txt")
+    os.path.join(RESULTS,"geneCounts_tcga.txt"),
+
     ]
 else:
     AlignFiles = os.path.join(LOGS, "star_150_align.txt")
@@ -22,7 +23,11 @@ else:
         os.path.join(RESULTS,"geneCounts_ena.txt")
     ]
 
-SalmonFiles = os.path.join(LOGS, "salmon_agr.txt")
+if TCGA:
+    SalmonFiles = os.path.join(LOGS, "salmon_agr_tcga.txt")
+else:
+    SalmonFiles = os.path.join(LOGS, "salmon_agr_ena.txt")
+
 
 
 
