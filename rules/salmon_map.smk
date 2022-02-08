@@ -21,3 +21,17 @@ rule map_salmon:
         mem_mb=BigJobMem
     shell:
         "salmon quant -i {params[0]} -l A -1 {input[0]} -2 {input[1]} --validateMappings -p {threads} -o {params[1]}"
+
+rule aggr_align_ena:
+    input:
+        expand(os.path.join(SALMON_OUTPUT,"{sample}", "quant.sf"), sample = SAMPLES)
+    output:
+        os.path.join(LOGS, "salmon_agr.txt")
+    threads:
+        1
+    resources:
+        mem_mb=BigJobMem
+    shell:
+        """
+        touch {output[0]}
+        """
