@@ -55,12 +55,12 @@ rule download_hg_38:
 rule unzip:
     """gunzip files."""
     input:
-        os.path.join(hg38_dir, 'hg38.fa.gz'),
-        os.path.join(hg38_dir, ' hg38.knownGene.gtf.gz')
+        os.path.join(HG38_dir, 'hg38.fa.gz'),
+        os.path.join(HG38_dir, ' hg38.knownGene.gtf.gz')
     output:
-        os.path.join(hg38_dir, 'hg38.fa'),
-        os.path.join(hg38_dir, ' hg38.knownGene.gtf'),
-        os.path.join(hg38_dir, 'unzip.dlflag')
+        os.path.join(HG38_dir, 'hg38.fa'),
+        os.path.join(HG38_dir, ' hg38.knownGene.gtf'),
+        os.path.join(HG38_dir, 'unzip.dlflag')
     threads:
         1
     shell:
