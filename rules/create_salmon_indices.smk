@@ -1,9 +1,9 @@
 """
 Snakefile for building Salmon index for encode v39
 
-snakemake -c 16 -s rules/create_salmon_indices.smk --use-conda --config Salmon_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes'
+snakemake -c 16 -s rules/create_salmon_indices.smk --use-conda --config Salmon_dir='/hpcfs/users/a1667917/Salmon_Ref_Genomes'
 
-snakemake -c 16 -s rules/create_salmon_indices.smk --use-conda --config Salmon_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --conda-create-envs-only --conda-frontend conda
+snakemake -c 1 -s rules/create_salmon_indices.smk --use-conda --config Salmon_dir='/hpcfs/users/a1667917/Salmon_Ref_Genomes' --conda-create-envs-only --conda-frontend conda
 
 """
 
@@ -60,6 +60,7 @@ rule concat:
         cat {input[0]}  {input[1]} | gzip > {output[0]}
         """
 
+# -k 25 for the smaller reads (should improve the sensitivity)
 
 rule salmon_index:
     """create index."""
@@ -78,7 +79,7 @@ rule salmon_index:
         mem_mb=BigJobMem
     shell:
         """
-        salmon index -p {threads} --gencode -t {input[0]}  -d {input[0]} -i {params[0]}
+        salmon index -p {threads} --gencode -t {input[0]}  -d {input[0]} -i {params[0]} -k 25
         touch {output[0]}
         """
 
