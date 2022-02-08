@@ -26,7 +26,7 @@ rule download_hg_38_fasta:
     """Rule to Download hg38 fasta."""
     output:
         os.path.join(HG38_dir,'download_hg38_fasta.dlflag'),
-        os.path.join(HG38_dir, 'hg38.fa.gz')
+        os.path.join(HG38_dir, 'GRCh38.primary_assembly.genome.fa.gz')
     threads:
         1
     shell:
@@ -40,7 +40,7 @@ rule download_hg_38_gtf:
     """Rule to Download hg38 gtf."""
     output:
         os.path.join(HG38_dir,'download_hg38_gtf.dlflag'),
-        os.path.join(HG38_dir, 'hg38.knownGene.gtf.gz')
+        os.path.join(HG38_dir, 'gencode.v39.primary_assembly.annotation.gtf.gz')
     threads:
         1
     shell:
