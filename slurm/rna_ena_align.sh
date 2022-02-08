@@ -1,4 +1,3 @@
-
 #!/bin/bash -l
 
 #SBATCH --job-name=rna_ena_snkg
