@@ -24,6 +24,6 @@ cd $SNK_DIR
 module load Anaconda3/2020.07
 conda activate snakemake_clean_env
 
-snakemake -s rna_seq_runner.smk --use-conda --config TCGA=True  Reads=/hpcfs/users/a1667917/Kevin/TCGA_RNA_Total_Bams/  Output=/hpcfs/users/a1667917/Kevin/RNA_TCGA_Out hg38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --profile wgs_tcga
+snakemake -s rna_seq_runner.smk --use-conda --config TCGA=True  Reads=/hpcfs/users/a1667917/Kevin/TCGA_RNA_Total_Bams/  Output=/hpcfs/users/a1667917/Kevin/RNA_TCGA_Out HG38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' Salmon_dir='/hpcfs/users/a1667917/Salmon_Ref_Genomes' --profile wgs_tcga
 
 conda deactivate

@@ -1,6 +1,4 @@
 
-
-
 rule map_salmon:
     """map salmon"""
     input:
