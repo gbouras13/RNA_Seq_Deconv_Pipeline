@@ -44,7 +44,7 @@ rule map_salmon_ena:
     input:
          os.path.join(STAR_BAMS,"{sample}_star_150_Aligned.sortedByCoord.out.bam")
     output:
-        os.path.join(SALMON_OUTPUT,"{sample}", "quant.sf")
+        os.path.join(SALMON_OUTPUT,"{sample}_ena", "quant.sf")
     log:
         os.path.join(LOGS,"{sample}_salmon.log")
     params:
@@ -61,7 +61,7 @@ rule map_salmon_ena:
 
 rule aggr_salmon_ena:
     input:
-        expand(os.path.join(SALMON_OUTPUT,"{sample}", "quant.sf"), sample = SAMPLES)
+        expand(os.path.join(SALMON_OUTPUT,"{sample}_ena", "quant.sf"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "salmon_agr_ena.txt")
     threads:
@@ -80,7 +80,7 @@ rule map_salmon_tcga:
     input:
          os.path.join(STAR_BAMS,"{sample}_star_100_Aligned.sortedByCoord.out.bam")
     output:
-        os.path.join(SALMON_OUTPUT,"{sample}", "quant.sf")
+        os.path.join(SALMON_OUTPUT,"{sample}_tcga", "quant.sf")
     log:
         os.path.join(LOGS,"{sample}_salmon.log")
     params:
@@ -97,7 +97,7 @@ rule map_salmon_tcga:
 
 rule aggr_salmon_tcga:
     input:
-        expand(os.path.join(SALMON_OUTPUT,"{sample}", "quant.sf"), sample = SAMPLES)
+        expand(os.path.join(SALMON_OUTPUT,"{sample}_tcga", "quant.sf"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "salmon_agr_tcga.txt")
     threads:
