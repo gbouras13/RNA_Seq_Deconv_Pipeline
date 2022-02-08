@@ -14,7 +14,7 @@ rule map_salmon:
     conda:
         os.path.join('..', 'envs','salmon.yaml')
     threads:
-        MediumJobCpu
+        BigJobCpu
     resources:
         mem_mb=BigJobMem
     shell:
