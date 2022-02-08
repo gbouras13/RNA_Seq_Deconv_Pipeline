@@ -70,7 +70,7 @@ rule salmon_index:
     output:
         os.path.join(Salmon_dir, 'salmon_index.flag')
     params:
-        'gencode.v39_decoys_salmon'
+        os.path.join(Salmon_dir, 'gencode.v39_decoys_salmon')
     threads:
         BigJobCpu
     conda:
