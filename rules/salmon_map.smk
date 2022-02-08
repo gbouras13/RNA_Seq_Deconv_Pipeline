@@ -10,7 +10,7 @@ rule map_salmon:
         os.path.join(LOGS,"{sample}_salmon.log")
     params:
         os.path.join(Salmon_dir, 'gencode.v39_decoys_salmon'),
-        "{sample}"
+        os.path.join(SALMON_OUTPUT, "{sample}")
     conda:
         os.path.join('..', 'envs','salmon.yaml')
     threads:
