@@ -32,7 +32,7 @@ Path(snakemake.output[0]).touch()
 assert_refgenie_asset_exists(
     genome ="hg38",
     asset ="salmon_sa_index",
-    refgenie_config = snakemake.input[0]
+    refgenie_config = snakemake.output[0]
 )
 
 Path(snakemake.output[1]).touch()
