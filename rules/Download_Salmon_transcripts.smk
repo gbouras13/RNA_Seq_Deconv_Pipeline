@@ -26,6 +26,8 @@ rule download_salmon_index:
     output:
         os.path.join(Salmon_dir,'download_salmon_indices.dlflag'),
         os.path.join(Salmon_dir, 'genome_config.yaml') 
+    conda:
+        os.path.join('..', 'envs','refgenie.yaml')
     threads:
         1
     shell:
