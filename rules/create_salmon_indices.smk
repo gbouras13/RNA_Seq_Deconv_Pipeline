@@ -37,7 +37,7 @@ rule all:
         os.path.join(Salmon_dir, 'GRCh38.decoys.txt'),
         os.path.join(Salmon_dir, 'GRCh38.gentrome.fa.gz'),
         os.path.join(Salmon_dir, 'salmon_index.flag'),
-        os.path.join(Salmon_dir, 'transcripts.fa')
+        os.path.join(Salmon_dir, 'star_transcripts.fa')
 
 rule decoys:
     """get decoys"""
