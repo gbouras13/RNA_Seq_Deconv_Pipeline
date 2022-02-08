@@ -24,18 +24,15 @@ rule all:
 rule download_salmon_index:
     """Rule to Download salmon transcripts."""
     output:
-        os.path.join(Salmon_dir, 'genome_config.yaml') ,
+        os.path.join(Salmon_dir, 'genome_config.yaml'),
         os.path.join(Salmon_dir,'download_salmon_indices.dlflag')
     conda:
         os.path.join('..', 'envs','refgenie.yaml')
     threads:
         1
-    shell:
+    script:
         """
-        refgenie init -c {output[0]}
-        refgenie pull hg38/salmon_sa_index -c {output[0]} --pull-large
-        refgenie pull hg38/tgMap -c {output[0]}
-        touch {output[1]}
+        os.path.join('..', 'scripts','refgenie.py')
         """
 
 

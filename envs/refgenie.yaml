@@ -4,5 +4,5 @@ channels:
     - bioconda
     - defaults
 dependencies:
-    - refgenie
-    - python= 3.7.3
+    - refgenconf
+    - pathlib
