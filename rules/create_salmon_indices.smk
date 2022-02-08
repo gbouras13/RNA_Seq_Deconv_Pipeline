@@ -63,7 +63,7 @@ rule concat:
 # -k 25 for the smaller reads (should improve the sensitivity)
 
 rule salmon_index:
-    """create index."""
+    """create salmon index."""
     input:
         os.path.join(Salmon_dir, 'GRCh38.gentrome.fa.gz'),
         os.path.join(Salmon_dir, 'GRCh38.decoys.txt')
