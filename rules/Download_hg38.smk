@@ -46,7 +46,7 @@ rule download_hg_38:
     shell:
         """
         wget -c "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/genes/hg38.knownGene.gtf.gz" -O  hg38.knownGene.gtf.gz
-        mv "hg38.ncbiRefSeq.gtf.gz" {output[1]}
+        mv "hg38.knownGene.gtf.gz" {output[1]}
         touch {output[0]}
         """
 
