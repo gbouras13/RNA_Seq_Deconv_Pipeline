@@ -22,7 +22,7 @@ else:
         os.path.join(RESULTS,"geneCounts_ena.txt")
     ]
 
-SalmonFile = os.path.join(LOGS, "salmon_agr.txt")
+SalmonFiles = os.path.join(LOGS, "salmon_agr.txt")
 
 
 

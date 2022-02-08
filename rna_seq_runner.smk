@@ -42,12 +42,14 @@ include: "rules/targets.smk"
 include: "rules/bam_to_fastq.smk"
 include: "rules/qc.smk"
 include: "rules/align.smk"
+include: "rules/salmon_map.smk"
 
 rule all:
     input:
         PreprocessingFiles,
         AlignFiles,
-        FeatureCountFiles
+        FeatureCountFiles,
+        SalmonFiles
         # ## Assembly
         # AssemblyFiles,
         # ## Translated (nt-to-aa) search
