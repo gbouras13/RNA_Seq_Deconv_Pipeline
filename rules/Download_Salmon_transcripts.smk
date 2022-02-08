@@ -23,8 +23,6 @@ rule all:
 
 rule download_salmon_index:
     """Rule to Download salmon transcripts."""
-    input:
-        Salmon_dir
     output:
         os.path.join(Salmon_dir, 'genome_config.yaml'),
         os.path.join(Salmon_dir,'download_salmon_indices.dlflag')
