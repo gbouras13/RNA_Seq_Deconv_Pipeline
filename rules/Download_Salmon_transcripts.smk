@@ -1,6 +1,6 @@
 """
 Snakefile for downloading files for Salmon indices
-snakemake -c 1 -s rules/Download_Salmon_transcripts.smk --config Salmon_dir='/hpcfs/users/a1667917/Salmon_Ref_Genomes'
+snakemake -c 1 -s rules/Download_Salmon_transcripts.smk --config Salmon_dir='/hpcfs/users/a1667917/Salmon_Ref_Genomes' --use-conda --conda-frontend conda
 """
 import os
 
@@ -24,8 +24,8 @@ rule all:
 rule download_salmon_index:
     """Rule to Download salmon transcripts."""
     output:
-        os.path.join(Salmon_dir,'download_salmon_indices.dlflag'),
-        os.path.join(Salmon_dir, 'genome_config.yaml') 
+        os.path.join(Salmon_dir, 'genome_config.yaml') ,
+        os.path.join(Salmon_dir,'download_salmon_indices.dlflag')
     conda:
         os.path.join('..', 'envs','refgenie.yaml')
     threads:
