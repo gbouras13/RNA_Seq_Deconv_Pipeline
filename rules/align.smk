@@ -53,6 +53,7 @@ rule enaalign_star:
             --readFilesIn {input[0]} {input[1]} \
             --readFilesCommand gunzip -c \
             --outFileNamePrefix {params[1]} \
+            --quantMode TranscriptomeSAM \
             --outSAMtype BAM SortedByCoordinate
         """
 

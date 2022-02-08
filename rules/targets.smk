@@ -23,10 +23,12 @@ else:
         os.path.join(RESULTS,"geneCounts_ena.txt")
     ]
 
-if TCGA:
-    SalmonFiles = os.path.join(LOGS, "salmon_agr_tcga.txt")
-else:
-    SalmonFiles = os.path.join(LOGS, "salmon_agr_ena.txt")
+SalmonFiles = os.path.join(LOGS, "salmon_agr.txt")
+
+# if TCGA:
+#     SalmonFiles = os.path.join(LOGS, "salmon_agr_tcga.txt")
+# else:
+#     SalmonFiles = os.path.join(LOGS, "salmon_agr_ena.txt")
 
 
 
