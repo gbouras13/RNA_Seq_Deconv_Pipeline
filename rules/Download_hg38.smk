@@ -36,7 +36,7 @@ rule download_hg_38_fasta:
         touch {output[0]}
         """
 
-rule download_hg_38:
+rule download_hg_38_gtf:
     """Rule to Download hg38 gtf."""
     output:
         os.path.join(HG38_dir,'download_hg38_gtf.dlflag'),

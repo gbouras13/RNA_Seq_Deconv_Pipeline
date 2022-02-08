@@ -28,16 +28,16 @@ if not os.path.exists(os.path.join(HG38_dir, 'hg38_150')):
 
 rule all:
     input:
-        os.path.join(HG38_dir, "chr8_100_star_build.log"),
-        os.path.join(HG38_dir, "chr8_150_star_build.log")
+        os.path.join(HG38_dir, "hg38_100_star_build.log"),
+        os.path.join(HG38_dir, "hg38_150_star_build.log")
 
 rule create_50_indecies:
     """create index."""
     input:
         os.path.join(HG38_dir, 'hg38.fa'),
-        os.path.join(HG38_dir, ' hg38.knownGene.gtf')
+        os.path.join(HG38_dir, 'hg38.knownGene.gtf')
     output:
-        os.path.join(HG38_dir,"chr8_100_star_build.log")
+        os.path.join(HG38_dir,"hg38_100_star_build.log")
     params:
         os.path.join(HG38_dir, 'hg38_100')
     threads:
@@ -60,9 +60,9 @@ rule create_75_indecies:
     """create index."""
     input:
         os.path.join(HG38_dir, 'hg38.fa'),
-        os.path.join(HG38_dir, ' hg38.knownGene.gtf')
+        os.path.join(HG38_dir, 'hg38.knownGene.gtf')
     output:
-        os.path.join(HG38_dir,"chr8_150_star_build.log")
+        os.path.join(HG38_dir,"hg38_150_star_build.log")
     params:
         os.path.join(HG38_dir, 'hg38_150')
     threads:
