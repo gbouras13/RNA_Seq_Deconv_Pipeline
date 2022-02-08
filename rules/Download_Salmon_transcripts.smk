@@ -33,8 +33,8 @@ rule download_salmon_index:
     shell:
         """
         refgenie init -c {output[0]}
-        refgenie pull hg38/salmon_sa_index
-        refgenie pull hg38/tgMap
+        refgenie pull hg38/salmon_sa_index -c {output[0]} --pull-large
+        refgenie pull hg38/tgMap -c {output[0]}
         touch {output[1]}
         """
 
