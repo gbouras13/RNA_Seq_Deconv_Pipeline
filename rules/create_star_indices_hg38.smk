@@ -35,7 +35,7 @@ rule create_50_indecies:
     """create index."""
     input:
         os.path.join(HG38_dir, 'hg38.fa'),
-        os.path.join(HG38_dir, 'hg38.ncbiRefSeq.gtf')
+        os.path.join(HG38_dir, ' hg38.knownGene.gtf')
     output:
         os.path.join(HG38_dir,"chr8_100_star_build.log")
     params:
@@ -60,7 +60,7 @@ rule create_75_indecies:
     """create index."""
     input:
         os.path.join(HG38_dir, 'hg38.fa'),
-        os.path.join(HG38_dir, 'hg38.ncbiRefSeq.gtf')
+        os.path.join(HG38_dir, ' hg38.knownGene.gtf')
     output:
         os.path.join(HG38_dir,"chr8_150_star_build.log")
     params:

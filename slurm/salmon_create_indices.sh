@@ -24,6 +24,6 @@ cd $SNK_DIR
 module load Anaconda3/2020.07
 conda activate snakemake_clean_env
 
-snakemake -s rules/create_salmon_indices.smk --use-conda --config Salmon_dir='/hpcfs/users/a1667917/Salmon_Ref_Genomes' --profile wgs_tcga
+snakemake -s rules/create_salmon_indices.smk --use-conda --config HG38_dir="/hpcfs/users/a1667917/STAR_Ref_Genomes" Salmon_dir='/hpcfs/users/a1667917/Salmon_Ref_Genomes' --profile wgs_tcga
 
 conda deactivate

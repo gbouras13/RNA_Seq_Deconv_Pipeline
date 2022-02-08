@@ -45,7 +45,7 @@ rule download_hg_38:
         1
     shell:
         """
-        wget -c "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/genes/hg38.ncbiRefSeq.gtf.gz" -O hg38.ncbiRefSeq.gtf.gz
+        wget -c "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/genes/ hg38.knownGene.gtf.gz" -O  hg38.knownGene.gtf.gz
         mv "hg38.ncbiRefSeq.gtf.gz" {output[1]}
         touch {output[0]}
         """
@@ -56,10 +56,10 @@ rule unzip:
     """gunzip files."""
     input:
         os.path.join(hg38_dir, 'hg38.fa.gz'),
-        os.path.join(hg38_dir, 'hg38.ncbiRefSeq.gtf.gz')
+        os.path.join(hg38_dir, ' hg38.knownGene.gtf.gz')
     output:
         os.path.join(hg38_dir, 'hg38.fa'),
-        os.path.join(hg38_dir, 'hg38.ncbiRefSeq.gtf'),
+        os.path.join(hg38_dir, ' hg38.knownGene.gtf'),
         os.path.join(hg38_dir, 'unzip.dlflag')
     threads:
         1

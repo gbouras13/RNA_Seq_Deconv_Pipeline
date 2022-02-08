@@ -94,7 +94,7 @@ rule transcript_for_star_salmon:
     """create salmon index."""
     input:
         os.path.join(HG38_dir, 'hg38.fa'),
-        os.path.join(HG38_dir, 'hg38.ncbiRefSeq.gtf')
+        os.path.join(HG38_dir, 'hg38.knownGene.gtf')
     output:
         os.path.join(Salmon_dir, 'star_transcripts.fa')
     threads:
