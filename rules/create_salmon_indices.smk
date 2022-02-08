@@ -1,9 +1,9 @@
 """
 Snakefile for building Salmon index for encode v39
 
-snakemake -s rules/create_salmon_indices.smk --use-conda --config Salmon_dir='/hpcfs/users/a1667917/Salmon_Ref_Genomes'
+snakemake -s rules/create_salmon_indices.smk --use-conda --config HG38_dir="/hpcfs/users/a1667917/STAR_Ref_Genomes" Salmon_dir='/hpcfs/users/a1667917/Salmon_Ref_Genomes'
 
-snakemake -c 1 -s rules/create_salmon_indices.smk --use-conda --config  --conda-create-envs-only --conda-frontend conda
+snakemake -c 1 -s rules/create_salmon_indices.smk --use-conda --conda-create-envs-only --conda-frontend conda
 
 """
 
@@ -22,6 +22,12 @@ if config['Salmon_dir'] is None:
 else:
     Salmon_dir = config["Salmon_dir"]
 
+if config['HG38_dir'] is None:
+    HG38_dir = "/hpcfs/users/a1667917/STAR_Ref_Genomes"
+else:
+    HG38_dir = config["HG38_dir"]
+
+
 # needs to be created before (should exist)
 if not os.path.exists(os.path.join(Salmon_dir)):
   os.makedirs(os.path.join(Salmon_dir))
@@ -30,7 +36,8 @@ rule all:
     input:
         os.path.join(Salmon_dir, 'GRCh38.decoys.txt'),
         os.path.join(Salmon_dir, 'GRCh38.gentrome.fa.gz'),
-        os.path.join(Salmon_dir, 'salmon_index.flag')
+        os.path.join(Salmon_dir, 'salmon_index.flag'),
+        os.path.join(Salmon_dir, 'transcripts.fa')
 
 rule decoys:
     """get decoys"""
@@ -83,8 +90,23 @@ rule salmon_index:
         touch {output[0]}
         """
 
-
-
+rule transcript_for_star_salmon:
+    """create salmon index."""
+    input:
+        os.path.join(HG38_dir, 'hg38.fa'),
+        os.path.join(HG38_dir, 'hg38.ncbiRefSeq.gtf')
+    output:
+        os.path.join(Salmon_dir, 'star_transcripts.fa')
+    threads:
+        BigJobCpu
+    conda:
+        os.path.join('..', 'envs','salmon.yaml')
+    resources:
+        mem_mb=BigJobMem
+    shell:
+        """
+        gffread -w {output[0]} -g {input[0]} {input[1]}
+        """
 
 
 
