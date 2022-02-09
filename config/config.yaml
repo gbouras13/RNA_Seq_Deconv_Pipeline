@@ -9,6 +9,7 @@ Output:
 HG38_dir:
 TCGA: True
 Salmon_dir:
+Kallisto_dir:
 
 ### STICK TO YOUR SYSTEM'S CPU:RAM RATIO FOR THESE
 BigJobMem: 150000     # Memory for MMSeqs in megabytes (e.g 64GB = 64000, recommend >= 64000)
@@ -39,6 +40,3 @@ READ_MINLENGTH: 90 # Minimum read length during QC steps (rule remove_low_qualit
 CONTIG_MINLENGTH: 1000 # Read minimum length (rule contig_reformating_and_stats in 01_preprocessing.smk)
 ENTROPY: 0.5 # Read minimum entropy (rule remove_low_quality in 01_preprocessing.smk)
 ENTROPYWINDOW: 25 # entropy window for low qual read filter
-
-
-
