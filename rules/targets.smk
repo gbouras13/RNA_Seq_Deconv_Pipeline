@@ -24,6 +24,8 @@ else:
     ]
 
 SalmonFiles = os.path.join(LOGS, "salmon_agr.txt")
+KallistoFiles = os.path.join(LOGS, "kallisto_agr.txt")
+
 
 # if TCGA:
 #     SalmonFiles = os.path.join(LOGS, "salmon_agr_tcga.txt")

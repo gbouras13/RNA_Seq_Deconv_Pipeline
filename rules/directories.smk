@@ -21,11 +21,11 @@ if config['Salmon_dir'] is None:
 else:
   Salmon_dir = config['Salmon_dir']
 
-### DATABASE SUBDIRs
-CONPATH = os.path.join(DBDIR, "contaminants")
-TAX = os.path.join(DBDIR, "tax", "taxonomy")
-TABLES = os.path.join(DBDIR, "tables")
-HOSTPATH = os.path.join(DBDIR, "host")
+if config['Kallisto_dir'] is None:
+  Kallisto_dir = '/hpcfs/users/a1667917/Kallisto_Ref_Genomes'
+else:
+  Kallisto_dir = config['Kallisto_dir']
+
 
 ### OUTPUT DIRs
 RESULTS = os.path.join(OUTPUT, 'RESULTS')
@@ -34,6 +34,7 @@ TMP = os.path.join(WORKDIR, 'TMP')
 LOGS = os.path.join(OUTPUT, 'LOGS')
 STAR_BAMS = os.path.join(RESULTS, 'STAR_BAMS')
 SALMON_OUTPUT = os.path.join(RESULTS, 'SALMON_OUTPUT')
+KALLISTO_OUTPUT = os.path.join(RESULTS, 'KALLISTO_OUTPUT')
 
 # fastqc
 FASTQC = os.path.join(RESULTS, "FASTQC")
@@ -54,3 +55,6 @@ if not os.path.exists(STAR_BAMS):
 # needs to be created for fastqc 
 if not os.path.exists(TMP):
   os.makedirs(TMP)
+# needs to be created for kallisto 
+if not os.path.exists(KALLISTO_OUTPUT):
+  os.makedirs(KALLISTO_OUTPUT)
