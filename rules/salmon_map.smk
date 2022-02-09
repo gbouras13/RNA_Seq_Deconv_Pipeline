@@ -1,5 +1,5 @@
 rule map_salmon:
-    """map salmon - IU is broad library mapping not A"""
+    """map salmon """
     input:
         os.path.join(TMP,"{sample}_trim_R1.fastq.gz"),
         os.path.join(TMP,"{sample}_trim_R2.fastq.gz")
@@ -17,7 +17,7 @@ rule map_salmon:
     resources:
         mem_mb=BigJobMem
     shell:
-        "salmon quant -i {params[0]} -l IU -1 {input[0]} -2 {input[1]} --validateMappings -p {threads} -o {params[1]}"
+        "salmon quant -i {params[0]} -l A -1 {input[0]} -2 {input[1]} --validateMappings -p {threads} -o {params[1]}"
 
 rule aggr_salmon:
     input:

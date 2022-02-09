@@ -64,10 +64,8 @@ rule concat:
         1
     shell:
         """
-        cat {input[0]}  {input[1]} | gzip > {output[0]}
+        cat {input[0]} {input[1]} | gzip > {output[0]}
         """
-
-## -k 25 for the smaller reads (should improve the sensitivity)
 
 rule salmon_index:
     """create salmon index."""
