@@ -20,7 +20,7 @@ rule fastp_Trim:
         """
 
 rule bbmap:
-    """ decontaminate sample - need to do each sample in own tmp dir or else  """
+    """ decontaminate sample - need to do each sample in own tmp dir or else the same ref clashes """
     input:
         os.path.join(TMP,"{sample}_trim_R1.fastq.gz"),
         os.path.join(TMP,"{sample}_trim_R2.fastq.gz"),
@@ -42,9 +42,9 @@ rule bbmap:
         """
         mkdir -p {params[0]}
         cd {params[0]}
-        bbsplit.sh in1={input[0]} in2={input[1]} ref={input[2]} outu1={output[0]}  outu2={output[1]} t={threads}
+        bbsplit.sh in1={input[0]} in2={input[1]} ref={input[2]} outGRCh38.primary_assembly.genome1={output[0]}  outGRCh38.primary_assembly.genome2={output[1]} t={threads}
+        rm -rf {params[0]}
         """
-
 
 rule fastqc:
     """fastqc trimmed reads"""
