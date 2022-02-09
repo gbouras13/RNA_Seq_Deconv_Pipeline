@@ -28,8 +28,6 @@ rule bbmap:
     output:
         os.path.join(TMP,"{sample}_clean_R1.fastq.gz"),
         os.path.join(TMP,"{sample}_clean_R2.fastq.gz")
-    params:
-        {sample}
     log:
         os.path.join(LOGS,"{sample}_bbmap.log")
     conda:
@@ -40,7 +38,7 @@ rule bbmap:
         mem_mb=BigJobMem
     shell:
         """
-        bbsplit.sh in1={input[0]} in2={input[1]} ref={input[2]} basename={params[0]} outu1={output[0]}  outu2={output[1]} t={threads}
+        bbsplit.sh in1={input[0]} in2={input[1]} ref={input[2]} basename={wildcards.sample} outu1={output[0]}  outu2={output[1]} t={threads}
         """
 
 
