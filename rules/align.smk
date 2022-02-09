@@ -97,7 +97,7 @@ rule feature_count_tcga:
     log:
         os.path.join(LOGS,"feature_count.log")
     params:
-        os.path.join(HG38_dir, 'hg38.ncbiRefSeq.gtf')
+        os.path.join(HG38_dir, 'gencode.v39.primary_assembly.annotation.gtf')
     conda:
         os.path.join('..', 'envs','align.yaml')
     threads:
@@ -119,7 +119,7 @@ rule feature_count_ena:
     log:
         os.path.join(LOGS,"feature_count.log")
     params:
-        os.path.join(HG38_dir, 'hg38.ncbiRefSeq.gtf')
+        os.path.join(HG38_dir, 'gencode.v39.primary_assembly.annotation.gtf')
     conda:
         os.path.join('..', 'envs','align.yaml')
     threads:
