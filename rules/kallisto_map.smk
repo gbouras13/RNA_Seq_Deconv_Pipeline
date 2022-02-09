@@ -22,7 +22,7 @@ rule map_kallisto:
 
 rule aggr_kallisto:
     input:
-        expand(os.path.join(SALMON_OUTPUT,"{sample}", "abundance.sf"), sample = SAMPLES)
+        expand(os.path.join(SALMON_OUTPUT,"{sample}", "abundance.tsv"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "kallisto_agr.txt")
     threads:
