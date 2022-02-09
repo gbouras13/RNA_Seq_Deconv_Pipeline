@@ -46,7 +46,7 @@ rule fastqc:
     """fastqc trimmed reads"""
     input:
         fwd = expand(os.path.join(TMP,"{sample}_clean_R1.fastq.gz"), sample = SAMPLES),
-        rev = expand(os.path.join(TMP,"{sample}_clean_R1.fastq.gz"), sample = SAMPLES),
+        rev = expand(os.path.join(TMP,"{sample}_clean_R2.fastq.gz"), sample = SAMPLES),
         dir = TMP
     output:
         os.path.join(MULTIQC,"multiqc_report.html")
