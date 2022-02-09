@@ -5,8 +5,8 @@
 #SBATCH --mail-type=BEGIN
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
-#SBATCH --err="salmon_indices_snk.err"
-#SBATCH --output="salmon_indices_snk.out"
+#SBATCH --err="kall_indices_snk.err"
+#SBATCH --output="kall_indices_snk.out"
 
 # Resources allocation request parameters
 #SBATCH -p batch
