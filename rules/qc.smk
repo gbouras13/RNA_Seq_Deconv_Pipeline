@@ -20,7 +20,7 @@ rule fastp_Trim:
         """
 
 rule bbmap:
-    """ decontaminate sample """
+    """ decontaminate sample - need to do each sample in own tmp dir or else  """
     input:
         os.path.join(TMP,"{sample}_trim_R1.fastq.gz"),
         os.path.join(TMP,"{sample}_trim_R2.fastq.gz"),
@@ -30,6 +30,8 @@ rule bbmap:
         os.path.join(TMP,"{sample}_clean_R2.fastq")
     log:
         os.path.join(LOGS,"{sample}_bbmap.log")
+    params:
+        os.path.join(TMP,"{sample}_bbmaptmp")
     conda:
         os.path.join('..', 'envs','qc.yaml')
     threads:
@@ -38,6 +40,8 @@ rule bbmap:
         mem_mb=BigJobMem
     shell:
         """
+        mkdir -p {params[0]}
+        cd {params[0]}
         bbsplit.sh in1={input[0]} in2={input[1]} ref={input[2]} outu1={output[0]}  outu2={output[1]} t={threads}
         """
 
