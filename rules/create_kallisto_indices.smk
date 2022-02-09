@@ -22,11 +22,6 @@ if config['Salmon_dir'] is None:
 else:
     Salmon_dir = config["Salmon_dir"]
 
-if config['HG38_dir'] is None:
-    HG38_dir = "/hpcfs/users/a1667917/STAR_Ref_Genomes"
-else:
-    HG38_dir = config["HG38_dir"]
-
 if config['Kallisto_dir'] is None:
     Kallisto_dir = "/hpcfs/users/a1667917/Kallisto_Ref_Genomes"
 else:
