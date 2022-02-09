@@ -1,7 +1,7 @@
 """
 Snakefile for building Kalliso index for encode v39
 
-snakemake -s rules/create_kallisto_indices.smk --use-conda --config HG38_dir="/hpcfs/users/a1667917/STAR_Ref_Genomes" Salmon_dir='/hpcfs/users/a1667917/Salmon_Ref_Genomes' Kallisto_dir = "/hpcfs/users/a1667917/Kallisto_Ref_Genomes"
+snakemake -s rules/create_kallisto_indices.smk --use-conda --config Salmon_dir='/hpcfs/users/a1667917/Salmon_Ref_Genomes' Kallisto_dir="/hpcfs/users/a1667917/Kallisto_Ref_Genomes"
 
 snakemake -c 1 -s rules/create_kallisto_indices.smk --use-conda --conda-create-envs-only --conda-frontend conda
 
