@@ -20,8 +20,7 @@ BigJobCpu = config["BigJobCpu"]
 # STAR can only use 16 threads on hpc for some reason
 # https://github.com/alexdobin/STAR/issues/1074
 MediumJobCpu = config["MediumJobCpu"]
-MediumJobMem = config["MediumJobMem"]
-
+MediumJJobMem = config["MediumJJobMem"]
 
 ### DIRECTORIES
 include: "rules/directories.smk"
@@ -36,7 +35,7 @@ SAMPLES = sampleReads.keys()
 
 # TCGA or EGA 
 
-ReadLength = config['ReadLength']
+TCGA = config['TCGA']
 
 # Import rules and functions
 include: "rules/targets.smk"

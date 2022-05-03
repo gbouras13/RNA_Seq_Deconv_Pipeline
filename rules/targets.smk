@@ -9,26 +9,19 @@ PreprocessingFiles = [
 ]
 
 
-if ReadLength == 100:
+if TCGA:
     AlignFiles = os.path.join(LOGS, "star_100_align.txt")
     FeatureCountFiles = [
     os.path.join(RESULTS,"geneCounts_tcga.out"),
     os.path.join(RESULTS,"geneCounts_tcga.txt"),
+
     ]
-elif ReadLength == 150:
+else:
     AlignFiles = os.path.join(LOGS, "star_150_align.txt")
     FeatureCountFiles = [
         os.path.join(RESULTS,"geneCounts_ena.out"),
         os.path.join(RESULTS,"geneCounts_ena.txt")
     ]
-else:
- AlignFiles = os.path.join(LOGS, "star_200_align.txt")
-    FeatureCountFiles = [
-        os.path.join(RESULTS,"geneCounts_200.out"),
-        os.path.join(RESULTS,"geneCounts_200.txt")
-    ]
-
-
 
 SalmonFiles = os.path.join(LOGS, "salmon_agr.txt")
 KallistoFiles = os.path.join(LOGS, "kallisto_agr.txt")
