@@ -13,7 +13,7 @@ rule fastp_Trim:
     threads:
         16
     resources:
-        mem_mb=BigJobMem
+        mem_mb=MediumJobMem
     shell:
         """
         fastp -i {input[0]} -I {input[1]} -o {output[0]} -O {output[1]} -w {threads}
@@ -66,7 +66,7 @@ rule fastqc:
     threads:
         BigJobCpu
     resources:
-        mem_mb=BigJobMem
+        mem_mb=MediumJobMem
     shell:
         """
         fastqc -t {threads} -o {params.fastqc} {input.fwd}
@@ -88,7 +88,7 @@ rule test_2:
     threads:
         1
     resources:
-        mem_mb=BigJobMem
+        mem_mb=MediumJobMem
     shell:
         """
         touch {output[0]}

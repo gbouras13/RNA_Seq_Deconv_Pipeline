@@ -7,7 +7,7 @@
 
 Output:
 HG38_dir:
-TCGA: True
+ReadLength: 100
 Salmon_dir:
 Kallisto_dir:
 

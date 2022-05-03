@@ -51,7 +51,7 @@ rule test:
     threads:
         1
     resources:
-        mem_mb=BigJobMem
+        mem_mb=MediumJobMem
     shell:
         """
         touch {output[0]}
