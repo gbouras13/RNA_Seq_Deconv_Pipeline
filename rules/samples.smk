@@ -8,11 +8,11 @@ def samplesFromDirectory(dir):
     """Parse samples from a directory"""
     outDict = {}
     # https://stackoverflow.com/questions/11860476/how-to-unnest-a-nested-list
-    samples= glob_wildcards(os.path.join(dir,'{sample}.bam'))
+    samples= glob_wildcards(os.path.join(dir,'{sample}.rna_seq.transcriptome.gdc_realn.bam'))
     samples2 = chain(*samples)
     for sample in samples2:
         outDict[sample] = {}
-        bam = os.path.join(dir,f'{sample}.bam')
+        bam = os.path.join(dir,f'{sample}.rna_seq.transcriptome.gdc_realn.bam')
         if os.path.isfile(bam):
             outDict[sample]['bam'] = bam
         else:
