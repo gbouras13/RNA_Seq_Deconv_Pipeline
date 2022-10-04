@@ -30,7 +30,7 @@ else:
 
 ### OUTPUT DIRs
 RESULTS = os.path.join(OUTPUT, 'RESULTS')
-UNALIGNED_FASTQS = os.path.join(OUTPUT, 'UNALIGNED_FASTQS')
+UNALIGNED_FASTQ = os.path.join(OUTPUT, 'UNALIGNED_FASTQ')
 LOGS = os.path.join(OUTPUT, 'LOGS')
 STAR_BAMS = os.path.join(RESULTS, 'STAR_BAMS')
 SALMON_OUTPUT = os.path.join(RESULTS, 'SALMON_OUTPUT')
