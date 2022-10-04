@@ -37,7 +37,7 @@ include: "rules/samples.smk"
 sampleBams = parseSamplesBam(BAMS)
 SAMPLES = sampleBams.keys()
 
-print(sampleReads)
+
 
 # TCGA or EGA 
 
