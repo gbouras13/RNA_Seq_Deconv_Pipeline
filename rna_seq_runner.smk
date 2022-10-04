@@ -36,6 +36,7 @@ OUTPUT = config['Output']
 include: "rules/samples.smk"
 sampleReads = parseSamples(READS)
 SAMPLES = sampleReads.keys()
+print(SAMPLES)
 
 # TCGA or EGA 
 
@@ -57,15 +58,4 @@ rule all:
         FeatureCountFiles,
         SalmonFiles,
         KallistoFiles
-        # ## Assembly
-        # AssemblyFiles,
-        # ## Translated (nt-to-aa) search
-        # SecondarySearchFilesAA,
-        # ## Untranslated (nt-to-nt) search
-        # SecondarySearchFilesNT,
-        # ## Contig annotation
-        # ContigAnnotFiles,
-        # ## Mapping (read-based contig id)
-        # MappingFiles,
-        # ## Summary
-        # SummaryFiles
+   

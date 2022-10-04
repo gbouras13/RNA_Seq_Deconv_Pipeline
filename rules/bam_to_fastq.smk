@@ -16,7 +16,7 @@ rule bam_sort:
         """
 
 rule bam_to_fastq:
-    """converted unmapped reads to fastq"""
+    """converted reads to fastq"""
     input:
         os.path.join(READS, "{sample}.bam")
     output:
