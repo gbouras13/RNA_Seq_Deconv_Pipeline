@@ -1,11 +1,11 @@
 #### if you want to only look at the mapped READS
 
-input_bam = "{sample}" 
+input_bam = "{sample}.bam"
 
 rule bam_index:
     """Index a .bam file for rapid access with samtools."""
     input:
-        os.path.join(BAMS,input_bam + ".fasta")
+        os.path.join(BAMS,input_bam)
     output:
         os.path.join(BAMS,"{sample}.bam.bai")
     conda:
@@ -23,7 +23,7 @@ rule bam_index:
 rule bam_map_sort_fastq:
     """converted mapped reads to fastq"""
     input:
-        os.path.join(BAMS,input_bam+ ".fasta"),
+        os.path.join(BAMS,input_bam),
         os.path.join(BAMS,"{sample}.bam.bai")
     output:
         os.path.join(UNALIGNED_FASTQ,"{sample}_R1.fastq.gz"),
@@ -51,8 +51,7 @@ rule bam_map_sort_fastq:
 rule aggr_bam_to_fastq:
     """Index a .bam file for rapid access with samtools."""
     input:
-        expand(os.path.join(UNALIGNED_FASTQ,"{sample}_R1.fastq.gz"), sample = SAMPLES),
-        expand(os.path.join(UNALIGNED_FASTQ,"{sample}_R2.fastq.gz"), sample = SAMPLES)
+        expand(os.path.join(UNALIGNED_FASTQ,"{sample}_R1.fastq.gz"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_bam_to_fastq.txt")
     threads:
