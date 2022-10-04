@@ -26,7 +26,7 @@ rule trust4:
 rule aggr_trust4:
     """aggregated"""
     input:
-        expand(os.path.join(TRUST4,"{sample}", "{sample}_final.out"), sample = SAMPLES)
+        expand(os.path.join(TRUST4, "{sample}_final.out"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_trust4.txt")
     threads:
