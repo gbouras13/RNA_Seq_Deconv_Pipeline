@@ -18,6 +18,8 @@ rule bam_map_sort_fastq:
     resources:
         mem_mb=32000,
         time=180
+    wildcard_constraints:
+        sample="[^/]+"
     shell:
         """
         samtools view -u -f 12 -F 260 -@ {threads} {input[0]} | samtools sort -@ {threads} |   
