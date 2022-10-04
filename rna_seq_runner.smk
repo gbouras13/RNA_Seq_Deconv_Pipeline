@@ -20,7 +20,7 @@ BigJobCpu = config["BigJobCpu"]
 # STAR can only use 16 threads on hpc for some reason
 # https://github.com/alexdobin/STAR/issues/1074
 MediumJobCpu = config["MediumJobCpu"]
-MediumJJobMem = config["MediumJJobMem"]
+MediumJobMem = config["MediumJobMem"]
 
 ### DIRECTORIES
 include: "rules/directories.smk"

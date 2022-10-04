@@ -30,13 +30,3 @@ MoreRamMem: 16000    # Memory for slightly RAM-hungry jobs in megabytes (recomme
 MoreRamCpu: 2        # CPUs for slightly RAM-hungry jobs (recommend >= 2)
 
 
-############################
-# Optional Rule Parameters #
-############################
-
-# Preprocessing
-QSCORE: 15 # Read quality trimming score (rule remove_low_quality in 01_preprocessing.smk)
-READ_MINLENGTH: 90 # Minimum read length during QC steps (rule remove_low_quality in 01_preprocessing.smk)
-CONTIG_MINLENGTH: 1000 # Read minimum length (rule contig_reformating_and_stats in 01_preprocessing.smk)
-ENTROPY: 0.5 # Read minimum entropy (rule remove_low_quality in 01_preprocessing.smk)
-ENTROPYWINDOW: 25 # entropy window for low qual read filter

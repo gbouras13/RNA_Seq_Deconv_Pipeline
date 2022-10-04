@@ -10,9 +10,10 @@ rule trust4:
     conda:
         os.path.join('..', 'envs','receptor.yaml')
     threads:
-        BigJobCpu
+        16
     resources:
-        mem_mb=MediumJobMem
+        mem_mb=MediumJobMem, 
+        time=60
     shell:
         '''
         run-trust4 -f {params[1]}/human_IMGT+C.fa --ref {params[1]}/hg38_bcrtcr.fa -t {threads} \
@@ -29,7 +30,8 @@ rule aggr_trust4:
     threads:
         1
     resources:
-        mem_mb=SmallJobMem
+        mem_mb=SmallJobMem,
+        time=3
     shell:
         """
         touch {output[0]}
