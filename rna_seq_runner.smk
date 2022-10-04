@@ -47,9 +47,9 @@ TCGA = config['TCGA']
 include: "rules/targets.smk"
 include: "rules/bam_to_fastq.smk"
 include: "rules/qc.smk"
-include: "rules/align.smk"
-include: "rules/salmon_map.smk"
-include: "rules/kallisto_map.smk"
+# include: "rules/align.smk"
+# include: "rules/salmon_map.smk"
+# include: "rules/kallisto_map.smk"
 include: "rules/receptor.smk"
 
 rule all:
