@@ -5,7 +5,7 @@ input_bam = "{sample}"
 rule bam_index:
     """Index a .bam file for rapid access with samtools."""
     input:
-        os.path.join(BAMS,input_bam + ".bam")
+        os.path.join(BAMS,input_bam + ".fasta")
     output:
         os.path.join(BAMS,"{sample}.bam.bai")
     conda:
@@ -23,7 +23,7 @@ rule bam_index:
 rule bam_map_sort_fastq:
     """converted mapped reads to fastq"""
     input:
-        os.path.join(BAMS,input_bam+ ".bam"),
+        os.path.join(BAMS,input_bam+ ".fasta"),
         os.path.join(BAMS,"{sample}.bam.bai")
     output:
         os.path.join(UNALIGNED_FASTQ,"{sample}_R1.fastq.gz"),
