@@ -55,8 +55,9 @@ include: "rules/receptor.smk"
 rule all:
     input:
         PreprocessingFiles,
-        AlignFiles,
-        FeatureCountFiles,
-        SalmonFiles,
-        KallistoFiles
+        #AlignFiles,
+        Trust4Files,
+        #FeatureCountFiles,
+        #SalmonFiles,
+        #KallistoFiles
    

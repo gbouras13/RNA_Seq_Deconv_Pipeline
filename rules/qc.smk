@@ -1,11 +1,11 @@
 rule fastp_Trim:
     """remove adapters etc """
     input:
-        os.path.join(TMP,"{sample}_R1.fastq.gz"),
-        os.path.join(TMP,"{sample}_R2.fastq.gz")
+        os.path.join(UNALIGNED_FASTQS,"{sample}_R1.fastq.gz"),
+        os.path.join(UNALIGNED_FASTQS,"{sample}_R2.fastq.gz")
     output:
-        os.path.join(TMP,"{sample}_trim_R1.fastq.gz"),
-        os.path.join(TMP,"{sample}_trim_R2.fastq.gz")
+        os.path.join(UNALIGNED_FASTQS,"{sample}_trim_R1.fastq.gz"),
+        os.path.join(UNALIGNED_FASTQS,"{sample}_trim_R2.fastq.gz")
     log:
         os.path.join(LOGS,"{sample}_fastp.log")
     conda:
@@ -13,7 +13,8 @@ rule fastp_Trim:
     threads:
         16
     resources:
-        mem_mb=MediumJobMem
+        mem_mb=MediumJobMem,
+        time=30
     shell:
         """
         fastp -i {input[0]} -I {input[1]} -o {output[0]} -O {output[1]} -w {threads}
@@ -53,8 +54,8 @@ rule fastp_Trim:
 rule fastqc:
     """fastqc trimmed reads"""
     input:
-        fwd = expand(os.path.join(TMP,"{sample}_trim_R1.fastq.gz"), sample = SAMPLES),
-        rev = expand(os.path.join(TMP,"{sample}_trim_R2.fastq.gz"), sample = SAMPLES),
+        fwd = expand(os.path.join(UNALIGNED_FASTQS,"{sample}_trim_R1.fastq.gz"), sample = SAMPLES),
+        rev = expand(os.path.join(UNALIGNED_FASTQS,"{sample}_trim_R2.fastq.gz"), sample = SAMPLES),
         dir = TMP
     output:
         os.path.join(MULTIQC,"multiqc_report.html")
@@ -64,9 +65,10 @@ rule fastqc:
     conda:
         os.path.join('..', 'envs','qc.yaml')
     threads:
-        BigJobCpu
+        16
     resources:
-        mem_mb=MediumJobMem
+        mem_mb=MediumJobMem,
+        time=30
     shell:
         """
         fastqc -t {threads} -o {params.fastqc} {input.fwd}
@@ -76,13 +78,11 @@ rule fastqc:
 
 
 
-
-
 #### aggregation rule
 rule test_2:
     """Index a .bam file for rapid access with samtools."""
     input:
-        expand(os.path.join(TMP,"{sample}_trim_R2.fastq.gz"), sample = SAMPLES)
+        expand(os.path.join(UNALIGNED_FASTQS,"{sample}_trim_R2.fastq.gz"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "fastp.txt")
     threads:

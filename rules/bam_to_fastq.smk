@@ -9,10 +9,10 @@ rule bam_index:
     conda:
         os.path.join('..', 'envs','samtools.yaml')
     threads:
-        BigJobCpu
+        16
     resources:
         mem_mb=BigJobMem,
-        time=60
+        time=30
     shell:
         """
         samtools index -@ {threads} {input[0]} {output[0]} 
@@ -28,9 +28,10 @@ rule bam_map_sort_fastq:
     conda:
         os.path.join('..', 'envs','samtools.yaml')
     threads:
-        BigJobCpu
+        32
     resources:
-        mem_mb=BigJobMem
+        mem_mb=32000,
+        time=180
     shell:
         """
         samtools view -u -f 12 -F 260 -@ {threads} {input[0]} | samtools sort -@ {threads} |   

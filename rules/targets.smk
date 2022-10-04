@@ -5,8 +5,7 @@ All target output files are declared here
 # Preprocessing files
 PreprocessingFiles = [
     os.path.join(LOGS, "aggr_bam_to_fastq.txt"),
-    os.path.join(MULTIQC,"multiqc_report.html"),
-    os.path.join(LOGS, "aggr_trust4.txt")
+    os.path.join(MULTIQC,"multiqc_report.html")
 ]
 
 
@@ -26,7 +25,7 @@ else:
 
 SalmonFiles = os.path.join(LOGS, "salmon_agr.txt")
 KallistoFiles = os.path.join(LOGS, "kallisto_agr.txt")
-
+Trust4Files = os.path.join(LOGS, "aggr_trust4.txt")
 
 # if TCGA:
 #     SalmonFiles = os.path.join(LOGS, "salmon_agr_tcga.txt")

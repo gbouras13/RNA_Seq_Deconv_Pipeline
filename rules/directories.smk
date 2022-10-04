@@ -56,8 +56,8 @@ if not os.path.exists(MULTIQC):
 if not os.path.exists(STAR_BAMS):
   os.makedirs(STAR_BAMS)
 # needs to be created for fastqc 
-if not os.path.exists(TMP):
-  os.makedirs(TMP)
+if not os.path.exists(UNALIGNED_FASTQS):
+  os.makedirs(UNALIGNED_FASTQS)
 # needs to be created for kallisto 
 if not os.path.exists(KALLISTO_OUTPUT):
   os.makedirs(KALLISTO_OUTPUT)
