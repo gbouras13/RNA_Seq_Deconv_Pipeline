@@ -22,6 +22,7 @@ rule trust4:
          -1 {input[0]} -2 {input[1]} -o {params[0]}  
         '''
 
+# https://github.com/sunbeam-labs/sunbeam/issues/185
 
 rule aggr_trust4:
     """aggregated"""
