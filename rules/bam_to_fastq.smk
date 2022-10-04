@@ -1,6 +1,6 @@
 
 def get_bam(wildcards):
-    return dictReads[wildcards.sample]["bam"]
+    return sampleBams[wildcards.sample]["bam"]
 
 #### if you want to only look at the mapped READS
 rule bam_index:
