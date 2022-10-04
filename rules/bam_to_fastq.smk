@@ -44,6 +44,8 @@ rule aggr_bam_to_fastq:
     resources:
         mem_mb=SmallJobMem,
         time=5
+    wildcard_constraints:
+        sample="[^/]+"
     shell:
         """
         touch {output[0]}

@@ -31,6 +31,8 @@ rule aggr_trust4:
         os.path.join(LOGS, "aggr_trust4.txt")
     threads:
         1
+    wildcard_constraints:
+        sample="[^/]+"
     resources:
         mem_mb=SmallJobMem,
         time=3
