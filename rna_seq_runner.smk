@@ -34,7 +34,7 @@ OUTPUT = config['Output']
 
 # Parse the samples and read files
 include: "rules/samples.smk"
-sampleReads = parseSamples(READS)
+sampleReads = parseSamples(BAMS)
 SAMPLES = sampleReads.keys()
 print(SAMPLES)
 print(READS)
