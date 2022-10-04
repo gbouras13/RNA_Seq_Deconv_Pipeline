@@ -37,7 +37,7 @@ include: "rules/samples.smk"
 sampleReads = parseSamples(BAMS)
 SAMPLES = sampleReads.keys()
 print(SAMPLES)
-print(READS)
+
 
 # TCGA or EGA 
 
