@@ -1,10 +1,11 @@
 #### if you want to only look at the mapped READS
 
+input_bam = {sample} + ".bam"
 
 rule bam_index:
     """Index a .bam file for rapid access with samtools."""
     input:
-        os.path.join(BAMS,f'{sample}.bam')
+        os.path.join(BAMS,input_bam)
     output:
         os.path.join(BAMS,"{sample}.bam.bai")
     conda:
