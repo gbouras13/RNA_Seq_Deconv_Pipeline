@@ -14,6 +14,8 @@ rule trust4:
     resources:
         mem_mb=MediumJobMem, 
         time=60
+    wildcard_constraints:
+        sample="[^/]+"
     shell:
         '''
         run-trust4 -f {params[1]}/human_IMGT+C.fa --ref {params[1]}/hg38_bcrtcr.fa -t {threads} \
