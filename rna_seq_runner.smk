@@ -36,8 +36,8 @@ OUTPUT = config['Output']
 include: "rules/samples.smk"
 sampleReads = parseSamples(BAMS)
 SAMPLES = sampleReads.keys()
-print(SAMPLES)
 
+print(sampleReads)
 
 # TCGA or EGA 
 
