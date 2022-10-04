@@ -1,11 +1,11 @@
 rule fastp_Trim:
     """remove adapters etc """
     input:
-        os.path.join(UNALIGNED_FASTQS,"{sample}_R1.fastq.gz"),
-        os.path.join(UNALIGNED_FASTQS,"{sample}_R2.fastq.gz")
+        os.path.join(UNALIGNED_FASTQ,"{sample}_R1.fastq.gz"),
+        os.path.join(UNALIGNED_FASTQ,"{sample}_R2.fastq.gz")
     output:
-        os.path.join(UNALIGNED_FASTQS,"{sample}_trim_R1.fastq.gz"),
-        os.path.join(UNALIGNED_FASTQS,"{sample}_trim_R2.fastq.gz")
+        os.path.join(UNALIGNED_FASTQ,"{sample}_trim_R1.fastq.gz"),
+        os.path.join(UNALIGNED_FASTQ,"{sample}_trim_R2.fastq.gz")
     log:
         os.path.join(LOGS,"{sample}_fastp.log")
     conda:
@@ -54,9 +54,9 @@ rule fastp_Trim:
 rule fastqc:
     """fastqc trimmed reads"""
     input:
-        fwd = expand(os.path.join(UNALIGNED_FASTQS,"{sample}_trim_R1.fastq.gz"), sample = SAMPLES),
-        rev = expand(os.path.join(UNALIGNED_FASTQS,"{sample}_trim_R2.fastq.gz"), sample = SAMPLES),
-        dir = TMP
+        fwd = expand(os.path.join(UNALIGNED_FASTQ,"{sample}_trim_R1.fastq.gz"), sample = SAMPLES),
+        rev = expand(os.path.join(UNALIGNED_FASTQ,"{sample}_trim_R2.fastq.gz"), sample = SAMPLES),
+        dir = UNALIGNED_FASTQ
     output:
         os.path.join(MULTIQC,"multiqc_report.html")
     params:
@@ -79,16 +79,17 @@ rule fastqc:
 
 
 #### aggregation rule
-rule test_2:
+rule aggr_qc:
     """Index a .bam file for rapid access with samtools."""
     input:
-        expand(os.path.join(UNALIGNED_FASTQS,"{sample}_trim_R2.fastq.gz"), sample = SAMPLES)
+        expand(os.path.join(UNALIGNED_FASTQ,"{sample}_trim_R2.fastq.gz"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "fastp.txt")
     threads:
         1
     resources:
-        mem_mb=MediumJobMem
+        mem_mb=SmallJobMem,
+        time=3
     shell:
         """
         touch {output[0]}
