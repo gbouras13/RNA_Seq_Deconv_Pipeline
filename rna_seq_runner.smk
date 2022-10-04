@@ -21,6 +21,8 @@ BigJobCpu = config["BigJobCpu"]
 # https://github.com/alexdobin/STAR/issues/1074
 MediumJobCpu = config["MediumJobCpu"]
 MediumJobMem = config["MediumJobMem"]
+SmallJobCpu = config["SmallJobCpu"]
+SmallJobMem = config["SmallJobMem"]
 
 TRUST4DIR = config['TRUST4DIR']
 
