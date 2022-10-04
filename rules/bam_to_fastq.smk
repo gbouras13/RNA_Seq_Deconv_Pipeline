@@ -3,7 +3,7 @@
 rule bam_index:
     """Index a .bam file for rapid access with samtools."""
     input:
-        os.path.join(BAMS, "{sample}.bam")
+        os.path.join(BAMS,"{sample}.bam")
     output:
         os.path.join(BAMS,"{sample}.bam.bai")
     conda:
