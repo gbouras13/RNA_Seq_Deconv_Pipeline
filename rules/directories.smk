@@ -37,6 +37,9 @@ STAR_BAMS = os.path.join(RESULTS, 'STAR_BAMS')
 SALMON_OUTPUT = os.path.join(RESULTS, 'SALMON_OUTPUT')
 KALLISTO_OUTPUT = os.path.join(RESULTS, 'KALLISTO_OUTPUT')
 
+TRUST4 = os.path.join(TRUST4, 'STAR_BAMS')
+
+
 # fastqc
 FASTQC = os.path.join(RESULTS, "FASTQC")
 MULTIQC = os.path.join(FASTQC, "MULTIQC")

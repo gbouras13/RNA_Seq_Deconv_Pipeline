@@ -22,6 +22,8 @@ BigJobCpu = config["BigJobCpu"]
 MediumJobCpu = config["MediumJobCpu"]
 MediumJobMem = config["MediumJobMem"]
 
+TRUST4DIR = config['TRUST4DIR']
+
 ### DIRECTORIES
 include: "rules/directories.smk"
 
