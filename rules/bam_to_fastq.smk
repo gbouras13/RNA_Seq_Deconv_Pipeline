@@ -4,8 +4,6 @@ rule bam_sort:
         os.path.join(READS, "{sample}.bam")
     output:
         os.path.join(TMP,"{sample}_sorted.bam")
-    log:
-        os.path.join(LOGS,"{sample}_sort.log")
     conda:
         os.path.join('..', 'envs','samtools.yaml')
     threads:
@@ -14,7 +12,7 @@ rule bam_sort:
         mem_mb=BigJobMem
     shell:
         """
-        samtools sort -@ {threads} {input[0]} > {output[0]} 2> {log}
+        samtools sort -@ {threads} {input[0]} > {output[0]} 
         """
 
 rule bam_to_fastq:
@@ -24,8 +22,6 @@ rule bam_to_fastq:
     output:
         os.path.join(TMP,"{sample}_R1.fastq.gz"),
         os.path.join(TMP,"{sample}_R2.fastq.gz")
-    log:
-        os.path.join(LOGS,"{sample}.bam_to_fastq.log")
     conda:
         os.path.join('..', 'envs','samtools.yaml')
     threads:
@@ -37,7 +33,7 @@ rule bam_to_fastq:
         samtools fastq -@ {threads} {input[0]} \
         -1 {output[0]} \
         -2 {output[1]} \
-        -0 /dev/null -s /dev/null -n 2> {log}
+        -0 /dev/null -s /dev/null -n 
         """
 
 #### aggregation rule
@@ -51,7 +47,8 @@ rule test:
     threads:
         1
     resources:
-        mem_mb=MediumJobMem
+        mem_mb=1000,
+        time=3
     shell:
         """
         touch {output[0]}
