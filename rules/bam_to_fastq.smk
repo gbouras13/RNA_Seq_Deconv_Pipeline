@@ -1,27 +1,30 @@
-rule bam_sort:
-    """Sort Reads"""
+#### if you want to only look at the mapped READS
+
+rule bam_index:
+    """Index a .bam file for rapid access with samtools."""
     input:
-        os.path.join(READS, "{sample}.bam")
+        os.path.join(BAMS, "{sample}.bam")
     output:
-        os.path.join(TMP,"{sample}_sorted.bam")
+        os.path.join(BAMS,"{sample}.bam.bai")
     conda:
         os.path.join('..', 'envs','samtools.yaml')
     threads:
         BigJobCpu
     resources:
-        mem_mb=BigJobMem
+        mem_mb=BigJobMem,
+        time=60
     shell:
         """
-        samtools sort -@ {threads} {input[0]} > {output[0]} 
+        samtools index -@ {threads} {input[0]} {output[0]} 
         """
 
-rule bam_to_fastq:
-    """converted reads to fastq"""
+rule bam_map_sort_fastq:
+    """converted mapped reads to fastq"""
     input:
-        os.path.join(READS, "{sample}.bam")
+        os.path.join(BAMS,"{sample}.bam")
     output:
-        os.path.join(TMP,"{sample}_R1.fastq.gz"),
-        os.path.join(TMP,"{sample}_R2.fastq.gz")
+        os.path.join(UNALIGNED_FASTQ,"{sample}_R1.fastq.gz"),
+        os.path.join(UNALIGNED_FASTQ,"{sample}_R2.fastq.gz")
     conda:
         os.path.join('..', 'envs','samtools.yaml')
     threads:
@@ -30,25 +33,29 @@ rule bam_to_fastq:
         mem_mb=BigJobMem
     shell:
         """
-        samtools fastq -@ {threads} {input[0]} \
+        samtools view -u -f 12 -F 260 -@ {threads} {input[0]} | samtools sort -@ {threads} |   
+        samtools fastq -@ {threads} \
         -1 {output[0]} \
         -2 {output[1]} \
         -0 /dev/null -s /dev/null -n 
         """
 
+
+
 #### aggregation rule
 
-rule test:
+rule aggr_bam_to_fastq:
     """Index a .bam file for rapid access with samtools."""
     input:
-        expand(os.path.join(TMP,"{sample}_R1.fastq.gz"), sample = SAMPLES)
+        expand(os.path.join(UNALIGNED_FASTQ,"{sample}_R1.fastq.gz"), sample = SAMPLES),
+        expand(os.path.join(UNALIGNED_FASTQ,"{sample}_R2.fastq.gz"), sample = SAMPLES)
     output:
-        os.path.join(LOGS, "bam_to_fastq.txt")
+        os.path.join(LOGS, "aggr_bam_to_fastq.txt")
     threads:
         1
     resources:
-        mem_mb=1000,
-        time=3
+        mem_mb=SmallJobMem,
+        time=5
     shell:
         """
         touch {output[0]}

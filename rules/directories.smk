@@ -30,8 +30,7 @@ else:
 
 ### OUTPUT DIRs
 RESULTS = os.path.join(OUTPUT, 'RESULTS')
-WORKDIR = os.path.join(OUTPUT, 'PROCESSING')
-TMP = os.path.join(WORKDIR, 'TMP')
+UNALIGNED_FASTQS = os.path.join(OUTPUT, 'UNALIGNED_FASTQS')
 LOGS = os.path.join(OUTPUT, 'LOGS')
 STAR_BAMS = os.path.join(RESULTS, 'STAR_BAMS')
 SALMON_OUTPUT = os.path.join(RESULTS, 'SALMON_OUTPUT')

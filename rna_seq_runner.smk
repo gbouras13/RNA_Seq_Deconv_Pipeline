@@ -29,7 +29,7 @@ TRUST4DIR = config['TRUST4DIR']
 ### DIRECTORIES
 include: "rules/directories.smk"
 
-READS = config['Reads']
+BAMS = config['Bams']
 OUTPUT = config['Output']
 
 # Parse the samples and read files
