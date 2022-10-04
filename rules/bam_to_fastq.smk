@@ -3,23 +3,6 @@ def get_bam(wildcards):
     return sampleBams[wildcards.sample]["bam"]
 
 #### if you want to only look at the mapped READS
-rule bam_index:
-    """Index a .bam file for rapid access with samtools."""
-    input:
-        get_bam
-    output:
-        os.path.join(BAMS,"{sample}.bam.bai")
-    conda:
-        os.path.join('..', 'envs','samtools.yaml')
-    threads:
-        16
-    resources:
-        mem_mb=BigJobMem,
-        time=30
-    shell:
-        """
-        samtools index -@ {threads} {input[0]} {output[0]} 
-        """
 
 rule bam_map_sort_fastq:
     """converted mapped reads to fastq"""
