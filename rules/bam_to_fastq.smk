@@ -22,7 +22,7 @@ rule bam_map_sort_fastq:
         sample="[^/]+"
     shell:
         """
-        samtools view -u -F 4 -@ {threads} {input[0]} | samtools sort -@ {threads} |   
+        samtools view -u -F 4 -@ {threads} {input[0]} | samtools sort -n -@ {threads} |   
         samtools fastq -@ {threads} \
         -1 {output[0]} \
         -2 {output[1]} \
