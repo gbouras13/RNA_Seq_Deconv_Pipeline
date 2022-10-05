@@ -1,7 +1,7 @@
 rule trust4:
     input:
-        os.path.join(UNALIGNED_FASTQ,"{sample}_R1.fastq.gz"),
-        os.path.join(UNALIGNED_FASTQ,"{sample}_R2.fastq.gz")
+        os.path.join(ALL_FASTQ,"{sample}_R1.fastq.gz"),
+        os.path.join(ALL_FASTQ,"{sample}_R2.fastq.gz")
     params:
         os.path.join(TRUST4,"{sample}"),
         TRUST4DIR
