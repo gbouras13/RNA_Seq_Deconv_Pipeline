@@ -9,8 +9,8 @@ rule bam_map_sort_fastq:
     input:
         get_bam,
     output:
-        os.path.join(UNALIGNED_FASTQ,"{sample}_R1.fastq.gz"),
-        os.path.join(UNALIGNED_FASTQ,"{sample}_R2.fastq.gz")
+        os.path.join(ALIGNED_FASTQ,"{sample}_R1.fastq.gz"),
+        os.path.join(ALIGNED_FASTQ,"{sample}_R2.fastq.gz")
     conda:
         os.path.join('..', 'envs','samtools.yaml')
     threads:
@@ -36,7 +36,7 @@ rule bam_map_sort_fastq:
 rule aggr_bam_to_fastq:
     """Index a .bam file for rapid access with samtools."""
     input:
-        expand(os.path.join(UNALIGNED_FASTQ,"{sample}_R1.fastq.gz"), sample = SAMPLES)
+        expand(os.path.join(ALIGNED_FASTQ,"{sample}_R1.fastq.gz"), sample = SAMPLES)
     output:
         os.path.join(LOGS, "aggr_bam_to_fastq.txt")
     threads:
