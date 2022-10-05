@@ -9,8 +9,8 @@ rule bam_map_sort_fastq:
     input:
         get_bam,
     output:
-        os.path.join(ALIGNED_FASTQ,"{sample}_R1.fastq.gz"),
-        os.path.join(ALIGNED_FASTQ,"{sample}_R2.fastq.gz")
+        os.path.join(ALL_FASTQ,"{sample}_R1.fastq.gz"),
+        os.path.join(ALL_FASTQ,"{sample}_R2.fastq.gz")
     conda:
         os.path.join('..', 'envs','samtools.yaml')
     threads:
@@ -22,11 +22,10 @@ rule bam_map_sort_fastq:
         sample="[^/]+"
     shell:
         """
-        samtools view -u -F 4 -@ {threads} {input[0]} | samtools sort -n -@ {threads} |   
-        samtools fastq -@ {threads} \
+        samtools fastq -@ {threads} {input[0]} \
         -1 {output[0]} \
         -2 {output[1]} \
-        -0 /dev/null -s /dev/null -n 
+        -0 /dev/null -s /dev/null
         """
 
 # unmapped reads
