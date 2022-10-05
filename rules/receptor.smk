@@ -18,7 +18,7 @@ rule trust4:
         sample="[^/]+"
     shell:
         '''
-        run-trust4 -f {params[1]}/human_IMGT+C.fa --ref {params[1]}/hg38_bcrtcr.fa -t {threads} \
+        run-trust4 -f {params[1]}/hg38_bcrtcr.fa --ref  {params[1]}/human_IMGT+C.fa  -t {threads} \
          -1 {input[0]} -2 {input[1]} -o {params[0]}  
         '''
 
