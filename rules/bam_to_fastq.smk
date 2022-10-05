@@ -30,7 +30,7 @@ rule bam_map_sort_fastq:
         """
 
 # unmapped reads
-rule bam_map_sort_fastq:
+rule bam_unmap_sort_fastq:
     """converted mapped reads to fastq"""
     input:
         get_bam,
