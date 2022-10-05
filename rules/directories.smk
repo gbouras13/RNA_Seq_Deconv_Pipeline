@@ -31,6 +31,7 @@ else:
 ### OUTPUT DIRs
 RESULTS = os.path.join(OUTPUT, 'RESULTS')
 UNALIGNED_FASTQ = os.path.join(OUTPUT, 'UNALIGNED_FASTQ')
+ALIGNED_FASTQ = os.path.join(OUTPUT, 'ALIGNED_FASTQ')
 LOGS = os.path.join(OUTPUT, 'LOGS')
 STAR_BAMS = os.path.join(RESULTS, 'STAR_BAMS')
 SALMON_OUTPUT = os.path.join(RESULTS, 'SALMON_OUTPUT')
